@@ -1,0 +1,897 @@
+2026-05-28 05:37:16  utils.logger               DEBUG     Logging initialised — level=DEBUG  file=C:\Users\MrUtkarsh\data_code_conversion\logs\code_conversion_2026_05_28.log
+2026-05-28 05:37:16  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 05:37:16  HubAgent                   DEBUG     Starting MCP infrastructure services for output_dir=C:\Users\MrUtkarsh\data_code_conversion\sample_java
+2026-05-28 05:37:17  FilesystemClient           INFO      Connected → filesystem_server.py
+2026-05-28 05:37:17  HubAgent                   DEBUG     FilesystemClient started
+2026-05-28 05:37:18  ExecutionClient            INFO      Connected → execution_server.py
+2026-05-28 05:37:18  HubAgent                   DEBUG     ExecutionClient started
+2026-05-28 05:37:20  VectorDBClient             INFO      Connected → vectordb_server.py
+2026-05-28 05:37:20  HubAgent                   DEBUG     VectorDBClient started (in-memory)
+2026-05-28 05:37:21  GitHubClient               INFO      Connected → github_server.py
+2026-05-28 05:37:21  HubAgent                   DEBUG     GitHubClient started
+2026-05-28 05:37:21  state.migration_manager    INFO      Migration pipeline initialised
+2026-05-28 05:37:21  HubAgent                   DEBUG     State file: C:\Users\MrUtkarsh\data_code_conversion\sample_java\migration_state.json
+2026-05-28 05:37:21  HubAgent                   DEBUG     Discovered 1 Java files:
+2026-05-28 05:37:21  HubAgent                   DEBUG       C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:37:21  HubAgent                   DEBUG     Registered 1 modules for migration
+2026-05-28 05:37:21  HubAgent                   DEBUG     [InvoiceCalculator] Reading source file: C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:37:21  HubAgent                   DEBUG     [InvoiceCalculator] Source loaded — 121 lines  4776 chars
+2026-05-28 05:37:21  HubAgent                   DEBUG     [InvoiceCalculator] Step 1 start — source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  start_step=1a
+2026-05-28 05:37:21  state.migration_manager    INFO      [InvoiceCalculator] → analyzing
+2026-05-28 05:37:21  HubAgent                   ERROR     Unhandled error for module InvoiceCalculator
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 169, in _process_module
+    analysis, spec, design = await self._analyze_and_design(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, source_code, module_state.source_file_path, request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 216, in _analyze_and_design
+    self.manager.update_module_status(name, ModuleStatus.ANALYZING)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\state\migration_manager.py", line 39, in update_module_status
+    self._persist()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\state\migration_manager.py", line 75, in _persist
+    self._state_file.write_text(self.state.model_dump_json(indent=2))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\AppData\Local\Programs\Python\Python314\Lib\pathlib\__init__.py", line 810, in write_text
+    return f.write(data)
+           ~~~~~~~^^^^^^
+  File "C:\Users\MrUtkarsh\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 949: character maps to <undefined>
+2026-05-28 05:37:22  state.migration_manager    INFO      [InvoiceCalculator] → failed ('charmap' codec can't encode character '\u2192' in position 949: character maps to <undefined>)
+2026-05-28 05:37:22  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001EC90AEEFB0>
+asyncgen: <async_generator object stdio_client at 0x000001EC90AEEFB0>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:37:22  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001EC90D30BC0>
+asyncgen: <async_generator object stdio_client at 0x000001EC90D30BC0>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:37:22  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001EC90D30A50>
+asyncgen: <async_generator object stdio_client at 0x000001EC90D30A50>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:37:23  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001EC90AEF570>
+asyncgen: <async_generator object stdio_client at 0x000001EC90AEF570>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:38:13  utils.logger               DEBUG     Logging initialised — level=DEBUG  file=C:\Users\MrUtkarsh\data_code_conversion\logs\code_conversion_2026_05_28.log
+2026-05-28 05:38:13  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 05:38:13  HubAgent                   DEBUG     Starting MCP infrastructure services for output_dir=C:\Users\MrUtkarsh\data_code_conversion\sample_java
+2026-05-28 05:38:14  FilesystemClient           INFO      Connected → filesystem_server.py
+2026-05-28 05:38:14  HubAgent                   DEBUG     FilesystemClient started
+2026-05-28 05:38:15  ExecutionClient            INFO      Connected → execution_server.py
+2026-05-28 05:38:15  HubAgent                   DEBUG     ExecutionClient started
+2026-05-28 05:38:17  VectorDBClient             INFO      Connected → vectordb_server.py
+2026-05-28 05:38:17  HubAgent                   DEBUG     VectorDBClient started (in-memory)
+2026-05-28 05:38:18  GitHubClient               INFO      Connected → github_server.py
+2026-05-28 05:38:18  HubAgent                   DEBUG     GitHubClient started
+2026-05-28 05:38:18  state.migration_manager    INFO      Migration pipeline initialised
+2026-05-28 05:38:18  HubAgent                   DEBUG     State file: C:\Users\MrUtkarsh\data_code_conversion\sample_java\migration_state.json
+2026-05-28 05:38:18  HubAgent                   DEBUG     Discovered 1 Java files:
+2026-05-28 05:38:18  HubAgent                   DEBUG       C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:38:18  HubAgent                   DEBUG     Registered 1 modules for migration
+2026-05-28 05:38:18  HubAgent                   DEBUG     [InvoiceCalculator] Reading source file: C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:38:18  HubAgent                   DEBUG     [InvoiceCalculator] Source loaded — 121 lines  4776 chars
+2026-05-28 05:38:18  HubAgent                   DEBUG     [InvoiceCalculator] Step 1 start — source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  start_step=1a
+2026-05-28 05:38:18  state.migration_manager    INFO      [InvoiceCalculator] → analyzing
+2026-05-28 05:38:18  HubAgent                   ERROR     Unhandled error for module InvoiceCalculator
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 169, in _process_module
+    analysis, spec, design = await self._analyze_and_design(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, source_code, module_state.source_file_path, request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 216, in _analyze_and_design
+    self.manager.update_module_status(name, ModuleStatus.ANALYZING)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\state\migration_manager.py", line 39, in update_module_status
+    self._persist()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\state\migration_manager.py", line 75, in _persist
+    self._state_file.write_text(self.state.model_dump_json(indent=2))
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\AppData\Local\Programs\Python\Python314\Lib\pathlib\__init__.py", line 810, in write_text
+    return f.write(data)
+           ~~~~~~~^^^^^^
+  File "C:\Users\MrUtkarsh\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 949: character maps to <undefined>
+2026-05-28 05:38:18  state.migration_manager    INFO      [InvoiceCalculator] → failed ('charmap' codec can't encode character '\u2192' in position 949: character maps to <undefined>)
+2026-05-28 05:38:19  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001F633AD8600>
+asyncgen: <async_generator object stdio_client at 0x000001F633AD8600>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:38:19  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001F633AD8490>
+asyncgen: <async_generator object stdio_client at 0x000001F633AD8490>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:38:19  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001F63378EFB0>
+asyncgen: <async_generator object stdio_client at 0x000001F63378EFB0>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:38:19  asyncio                    ERROR     an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x000001F63378E9F0>
+asyncgen: <async_generator object stdio_client at 0x000001F63378E9F0>
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 799, in __aexit__
+  |     raise BaseExceptionGroup(
+  |         "unhandled errors in a TaskGroup", self._exceptions
+  |     ) from None
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 183, in stdio_client
+    anyio.create_task_group() as tg,
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 805, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 455, in __exit__
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-05-28 05:57:53  utils.logger               DEBUG     Logging initialised — level=DEBUG  file=C:\Users\MrUtkarsh\data_code_conversion\logs\code_conversion_2026_05_28.log
+2026-05-28 05:57:53  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 05:57:53  HubAgent                   DEBUG     Starting MCP infrastructure services for output_dir=C:\Users\MrUtkarsh\data_code_conversion\sample_java
+2026-05-28 05:57:54  FilesystemClient           INFO      Connected → filesystem_server.py
+2026-05-28 05:57:54  HubAgent                   DEBUG     FilesystemClient started
+2026-05-28 05:57:55  ExecutionClient            INFO      Connected → execution_server.py
+2026-05-28 05:57:55  HubAgent                   DEBUG     ExecutionClient started
+2026-05-28 05:57:57  VectorDBClient             INFO      Connected → vectordb_server.py
+2026-05-28 05:57:57  HubAgent                   DEBUG     VectorDBClient started (in-memory)
+2026-05-28 05:57:58  GitHubClient               INFO      Connected → github_server.py
+2026-05-28 05:57:58  HubAgent                   DEBUG     GitHubClient started
+2026-05-28 05:57:58  state.migration_manager    INFO      Migration pipeline initialised
+2026-05-28 05:57:58  HubAgent                   DEBUG     State file: C:\Users\MrUtkarsh\data_code_conversion\sample_java\migration_state.json
+2026-05-28 05:57:58  HubAgent                   DEBUG     Discovered 1 Java files:
+2026-05-28 05:57:58  HubAgent                   DEBUG       C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:57:58  HubAgent                   DEBUG     Registered 1 modules for migration
+2026-05-28 05:57:58  HubAgent                   DEBUG     [InvoiceCalculator] Reading source file: C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 05:57:58  HubAgent                   DEBUG     [InvoiceCalculator] Source loaded — 121 lines  4776 chars
+2026-05-28 05:57:58  HubAgent                   DEBUG     [InvoiceCalculator] Step 1 start — source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  start_step=1a
+2026-05-28 05:57:58  state.migration_manager    INFO      [InvoiceCalculator] → analyzing
+2026-05-28 05:57:58  UnderstandAgent            DEBUG     Initialised — model=gpt-4o  provider=openai
+2026-05-28 05:57:58  UnderstandAgent            INFO      Analysing module: InvoiceCalculator
+2026-05-28 05:57:58  UnderstandAgent            DEBUG     [InvoiceCalculator] source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  source_lines=121  source_chars=4776
+2026-05-28 05:57:58  UnderstandAgent            DEBUG     LLM call — model=gpt-4o  max_tokens=4096  messages=2  system_chars=1089
+2026-05-28 05:57:58  LiteLLM                    DEBUG     
+
+2026-05-28 05:57:58  LiteLLM                    DEBUG     [92mRequest to litellm:[0m
+2026-05-28 05:57:58  LiteLLM                    DEBUG     [92mlitellm.completion(model='gpt-4o', messages=[{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], max_tokens=4096)[0m
+2026-05-28 05:57:58  LiteLLM                    DEBUG     
+
+2026-05-28 05:57:58  LiteLLM                    DEBUG     Removing thought signatures from tool call IDs for non-Gemini model
+2026-05-28 05:57:58  LiteLLM                    DEBUG     self.optional_params: {}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     SYNC kwargs[caching]: False; litellm.cache: None; kwargs.get('cache')['no-cache']: False
+2026-05-28 05:57:58  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 05:57:58  LiteLLM                    INFO      
+LiteLLM completion() model= gpt-4o; provider = openai
+2026-05-28 05:57:58  LiteLLM                    DEBUG     
+LiteLLM: Params passed to completion() {'model': 'gpt-4o', 'functions': None, 'function_call': None, 'temperature': None, 'top_p': None, 'n': None, 'stream': None, 'stream_options': None, 'stop': None, 'max_tokens': 4096, 'max_completion_tokens': None, 'modalities': None, 'prediction': None, 'audio': None, 'presence_penalty': None, 'frequency_penalty': None, 'logit_bias': None, 'user': None, 'custom_llm_provider': 'openai', 'response_format': None, 'seed': None, 'tools': None, 'tool_choice': None, 'max_retries': None, 'logprobs': None, 'top_logprobs': None, 'extra_headers': None, 'api_version': None, 'parallel_tool_calls': None, 'drop_params': None, 'allowed_openai_params': None, 'reasoning_effort': None, 'verbosity': None, 'additional_drop_params': None, 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'thinking': None, 'web_search_options': None, 'safety_identifier': None, 'service_tier': None}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     
+LiteLLM: Non-Default params passed to completion() {'max_tokens': 4096}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     Final returned optional params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     self.optional_params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 05:57:58  LiteLLM                    DEBUG     [92m
+
+POST Request Sent from LiteLLM:
+curl -X POST \
+https://api.openai.com/v1/ \
+-d '{'model': 'gpt-4o', 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'max_tokens': 4096, 'extra_body': {}}'
+[0m
+
+2026-05-28 05:57:59  openai._base_client        DEBUG     Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'timeout': 600.0, 'files': None, 'idempotency_key': 'stainless-python-retry-3e0acde1-3ac8-40ed-a1e2-5bbe2b0e2cc0', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'model': 'gpt-4o', 'max_tokens': 4096}, 'extra_json': {}}
+2026-05-28 05:57:59  openai._base_client        DEBUG     Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2026-05-28 05:57:59  httpcore.connection        DEBUG     connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=600.0 socket_options=None
+2026-05-28 05:57:59  httpcore.connection        DEBUG     connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001C633FFE0D0>
+2026-05-28 05:57:59  httpcore.connection        DEBUG     start_tls.started ssl_context=<ssl.SSLContext object at 0x000001C631BA4BB0> server_hostname='api.openai.com' timeout=600.0
+2026-05-28 05:57:59  httpcore.connection        DEBUG     start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001C6340C50F0>
+2026-05-28 05:57:59  httpcore.http11            DEBUG     send_request_headers.started request=<Request [b'POST']>
+2026-05-28 05:57:59  httpcore.http11            DEBUG     send_request_headers.complete
+2026-05-28 05:57:59  httpcore.http11            DEBUG     send_request_body.started request=<Request [b'POST']>
+2026-05-28 05:57:59  httpcore.http11            DEBUG     send_request_body.complete
+2026-05-28 05:57:59  httpcore.http11            DEBUG     receive_response_headers.started request=<Request [b'POST']>
+2026-05-28 05:57:59  httpcore.http11            DEBUG     receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 28 May 2026 05:57:59 GMT'), (b'Content-Type', b'text/plain'), (b'Content-Length', b'410'), (b'Connection', b'keep-alive'), (b'set-cookie', b'__cf_bm=sGG2oXKTNiPIhqdVeTibrn_3Km03HCE5Xk2__yQZ38A-1779947879.479391-1.0.1.1-GyCoIxoNO2VYSaRO_28ex475fo8ft99ksmPd8RKl.x8WCZd.ndV904l4M2Z2_x1YgLEIvaYXpIWy6VZyRf_i6plbhQfJZULQ90C1PuSPzFUh21J3O5or2AX5ZyAEnujt; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:27:59 GMT'), (b'set-cookie', b'_cfuvid=fZbmbKZf6bbVFL9E6HVrBEDuOChM4fDElYXYEa0Xbpo-1779947879.479391-1.0.1.1-5EMjeKxY6qLsCp.ZKrzCIhQlhSWMYZYx8tNbgVu8UbE; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), (b'CF-Ray', b'a02b0666bb543fe6-BOM'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'X-Content-Type-Options', b'nosniff'), (b'x-error-json', b'ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIkluY29ycmVjdCBBUEkga2V5IHByb3ZpZGVkOiBzay1wcm9qLSoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqQlhRQS4gWW91IGNhbiBmaW5kIHlvdXIgQVBJIGtleSBhdCBodHRwczovL3BsYXRmb3JtLm9wZW5haS5jb20vYWNjb3VudC9hcGkta2V5cy4iLAogICAgInR5cGUiOiAiaW52YWxpZF9yZXF1ZXN0X2Vycm9yIiwKICAgICJjb2RlIjogImludmFsaWRfYXBpX2tleSIsCiAgICAicGFyYW0iOiBudWxsCiAgfSwKICAic3RhdHVzIjogNDAxCn0='), (b'x-openai-authorization-error', b'401'), (b'x-openai-ide-error-code', b'invalid_api_key'), (b'x-openai-internal-caller', b'unknown_through_ide'), (b'x-openai-proxy-wasm', b'v0.1'), (b'x-request-id', b'req_5924cb78740645b6b08cebba2c1b102d'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2026-05-28 05:57:59  httpcore.http11            DEBUG     receive_response_body.started request=<Request [b'POST']>
+2026-05-28 05:57:59  httpcore.http11            DEBUG     receive_response_body.complete
+2026-05-28 05:57:59  httpcore.http11            DEBUG     response_closed.started
+2026-05-28 05:57:59  httpcore.http11            DEBUG     response_closed.complete
+2026-05-28 05:57:59  openai._base_client        DEBUG     HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 28 May 2026 05:57:59 GMT'), ('content-type', 'text/plain'), ('content-length', '410'), ('connection', 'keep-alive'), ('set-cookie', '__cf_bm=sGG2oXKTNiPIhqdVeTibrn_3Km03HCE5Xk2__yQZ38A-1779947879.479391-1.0.1.1-GyCoIxoNO2VYSaRO_28ex475fo8ft99ksmPd8RKl.x8WCZd.ndV904l4M2Z2_x1YgLEIvaYXpIWy6VZyRf_i6plbhQfJZULQ90C1PuSPzFUh21J3O5or2AX5ZyAEnujt; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:27:59 GMT'), ('set-cookie', '_cfuvid=fZbmbKZf6bbVFL9E6HVrBEDuOChM4fDElYXYEa0Xbpo-1779947879.479391-1.0.1.1-5EMjeKxY6qLsCp.ZKrzCIhQlhSWMYZYx8tNbgVu8UbE; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), ('cf-ray', 'a02b0666bb543fe6-BOM'), ('cf-cache-status', 'DYNAMIC'), ('server', 'cloudflare'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('access-control-expose-headers', 'CF-Ray'), ('access-control-expose-headers', 'CF-Ray'), ('x-content-type-options', 'nosniff'), ('x-error-json', 'ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIkluY29ycmVjdCBBUEkga2V5IHByb3ZpZGVkOiBzay1wcm9qLSoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqQlhRQS4gWW91IGNhbiBmaW5kIHlvdXIgQVBJIGtleSBhdCBodHRwczovL3BsYXRmb3JtLm9wZW5haS5jb20vYWNjb3VudC9hcGkta2V5cy4iLAogICAgInR5cGUiOiAiaW52YWxpZF9yZXF1ZXN0X2Vycm9yIiwKICAgICJjb2RlIjogImludmFsaWRfYXBpX2tleSIsCiAgICAicGFyYW0iOiBudWxsCiAgfSwKICAic3RhdHVzIjogNDAxCn0='), ('x-openai-authorization-error', '401'), ('x-openai-ide-error-code', 'invalid_api_key'), ('x-openai-internal-caller', 'unknown_through_ide'), ('x-openai-proxy-wasm', 'v0.1'), ('x-request-id', 'req_5924cb78740645b6b08cebba2c1b102d'), ('alt-svc', 'h3=":443"; ma=86400')])
+2026-05-28 05:57:59  openai._base_client        DEBUG     request_id: req_5924cb78740645b6b08cebba2c1b102d
+2026-05-28 05:57:59  openai._base_client        DEBUG     Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1050, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-05-28 05:58:00  openai._base_client        DEBUG     Not retrying
+2026-05-28 05:58:00  openai._base_client        DEBUG     Re-raising status error
+2026-05-28 05:58:00  LiteLLM                    DEBUG     openai.py: Received openai error - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-05-28 05:58:00  LiteLLM                    DEBUG     RAW RESPONSE:
+Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+
+2026-05-28 05:58:00  LiteLLM                    DEBUG     Logging Details: logger_fn - None | callable(logger_fn) - False
+2026-05-28 05:58:00  LiteLLM                    DEBUG     Logging Details LiteLLM-Failure Call: []
+2026-05-28 05:58:00  HubAgent                   ERROR     Unhandled error for module InvoiceCalculator
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 852, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 780, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 503, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 478, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2698, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2670, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 863, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 169, in _process_module
+    analysis, spec, design = await self._analyze_and_design(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, source_code, module_state.source_file_path, request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 218, in _analyze_and_design
+    analysis = UnderstandAgent().run(source_code, name, source_file_path)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\analyze_and_design\understand_agent.py", line 24, in run
+    response = self._call_llm(
+        system=UNDERSTAND_SYSTEM,
+    ...<9 lines>...
+        max_tokens=4096,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\base_agent.py", line 59, in _call_llm
+    response = litellm.completion(**kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1769, in wrapper
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1590, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 543, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.
+2026-05-28 05:58:02  state.migration_manager    INFO      [InvoiceCalculator] → failed (litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.)
+2026-05-28 05:58:02  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 06:07:14  utils.logger               DEBUG     Logging initialised — level=DEBUG  file=C:\Users\MrUtkarsh\data_code_conversion\logs\code_conversion_2026_05_28.log
+2026-05-28 06:07:14  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 06:07:14  HubAgent                   DEBUG     Starting MCP infrastructure services for output_dir=C:\Users\MrUtkarsh\data_code_conversion\sample_java
+2026-05-28 06:07:15  FilesystemClient           INFO      Connected → filesystem_server.py
+2026-05-28 06:07:15  HubAgent                   DEBUG     FilesystemClient started
+2026-05-28 06:07:17  ExecutionClient            INFO      Connected → execution_server.py
+2026-05-28 06:07:17  HubAgent                   DEBUG     ExecutionClient started
+2026-05-28 06:07:18  VectorDBClient             INFO      Connected → vectordb_server.py
+2026-05-28 06:07:18  HubAgent                   DEBUG     VectorDBClient started (in-memory)
+2026-05-28 06:07:20  GitHubClient               INFO      Connected → github_server.py
+2026-05-28 06:07:20  HubAgent                   DEBUG     GitHubClient started
+2026-05-28 06:07:20  state.migration_manager    INFO      Migration pipeline initialised
+2026-05-28 06:07:20  HubAgent                   DEBUG     State file: C:\Users\MrUtkarsh\data_code_conversion\sample_java\migration_state.json
+2026-05-28 06:07:20  HubAgent                   DEBUG     Discovered 1 Java files:
+2026-05-28 06:07:20  HubAgent                   DEBUG       C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 06:07:20  HubAgent                   DEBUG     Registered 1 modules for migration
+2026-05-28 06:07:20  HubAgent                   DEBUG     [InvoiceCalculator] Reading source file: C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 06:07:20  HubAgent                   DEBUG     [InvoiceCalculator] Source loaded — 121 lines  4776 chars
+2026-05-28 06:07:20  HubAgent                   DEBUG     [InvoiceCalculator] Step 1 start — source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  start_step=1a
+2026-05-28 06:07:20  state.migration_manager    INFO      [InvoiceCalculator] → analyzing
+2026-05-28 06:07:20  UnderstandAgent            DEBUG     Initialised — model=gpt-4o  provider=openai
+2026-05-28 06:07:20  UnderstandAgent            INFO      Analysing module: InvoiceCalculator
+2026-05-28 06:07:20  UnderstandAgent            DEBUG     [InvoiceCalculator] source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  source_lines=121  source_chars=4776
+2026-05-28 06:07:20  UnderstandAgent            DEBUG     LLM call — model=gpt-4o  max_tokens=4096  messages=2  system_chars=1089
+2026-05-28 06:07:20  LiteLLM                    DEBUG     
+
+2026-05-28 06:07:20  LiteLLM                    DEBUG     [92mRequest to litellm:[0m
+2026-05-28 06:07:20  LiteLLM                    DEBUG     [92mlitellm.completion(model='gpt-4o', messages=[{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], max_tokens=4096)[0m
+2026-05-28 06:07:20  LiteLLM                    DEBUG     
+
+2026-05-28 06:07:20  LiteLLM                    DEBUG     Removing thought signatures from tool call IDs for non-Gemini model
+2026-05-28 06:07:20  LiteLLM                    DEBUG     self.optional_params: {}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     SYNC kwargs[caching]: False; litellm.cache: None; kwargs.get('cache')['no-cache']: False
+2026-05-28 06:07:20  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 06:07:20  LiteLLM                    INFO      
+LiteLLM completion() model= gpt-4o; provider = openai
+2026-05-28 06:07:20  LiteLLM                    DEBUG     
+LiteLLM: Params passed to completion() {'model': 'gpt-4o', 'functions': None, 'function_call': None, 'temperature': None, 'top_p': None, 'n': None, 'stream': None, 'stream_options': None, 'stop': None, 'max_tokens': 4096, 'max_completion_tokens': None, 'modalities': None, 'prediction': None, 'audio': None, 'presence_penalty': None, 'frequency_penalty': None, 'logit_bias': None, 'user': None, 'custom_llm_provider': 'openai', 'response_format': None, 'seed': None, 'tools': None, 'tool_choice': None, 'max_retries': None, 'logprobs': None, 'top_logprobs': None, 'extra_headers': None, 'api_version': None, 'parallel_tool_calls': None, 'drop_params': None, 'allowed_openai_params': None, 'reasoning_effort': None, 'verbosity': None, 'additional_drop_params': None, 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'thinking': None, 'web_search_options': None, 'safety_identifier': None, 'service_tier': None}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     
+LiteLLM: Non-Default params passed to completion() {'max_tokens': 4096}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     Final returned optional params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     self.optional_params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 06:07:20  LiteLLM                    DEBUG     [92m
+
+POST Request Sent from LiteLLM:
+curl -X POST \
+https://api.openai.com/v1/ \
+-d '{'model': 'gpt-4o', 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'max_tokens': 4096, 'extra_body': {}}'
+[0m
+
+2026-05-28 06:07:20  openai._base_client        DEBUG     Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'timeout': 600.0, 'files': None, 'idempotency_key': 'stainless-python-retry-b503a948-4fd9-49a9-affd-4a57cdab91fd', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'model': 'gpt-4o', 'max_tokens': 4096}, 'extra_json': {}}
+2026-05-28 06:07:20  openai._base_client        DEBUG     Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2026-05-28 06:07:20  httpcore.connection        DEBUG     connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=600.0 socket_options=None
+2026-05-28 06:07:20  httpcore.connection        DEBUG     connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028117426210>
+2026-05-28 06:07:20  httpcore.connection        DEBUG     start_tls.started ssl_context=<ssl.SSLContext object at 0x0000028114FD4BB0> server_hostname='api.openai.com' timeout=600.0
+2026-05-28 06:07:20  httpcore.connection        DEBUG     start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x0000028117504E90>
+2026-05-28 06:07:20  httpcore.http11            DEBUG     send_request_headers.started request=<Request [b'POST']>
+2026-05-28 06:07:20  httpcore.http11            DEBUG     send_request_headers.complete
+2026-05-28 06:07:20  httpcore.http11            DEBUG     send_request_body.started request=<Request [b'POST']>
+2026-05-28 06:07:20  httpcore.http11            DEBUG     send_request_body.complete
+2026-05-28 06:07:20  httpcore.http11            DEBUG     receive_response_headers.started request=<Request [b'POST']>
+2026-05-28 06:07:21  httpcore.http11            DEBUG     receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 28 May 2026 06:07:21 GMT'), (b'Content-Type', b'text/plain'), (b'Content-Length', b'410'), (b'Connection', b'keep-alive'), (b'set-cookie', b'__cf_bm=S6koyd6w.z.U55Xm01emlL_fm19ML4cBPm3EAv2JlXU-1779948440.6474936-1.0.1.1-uk0p04Hzgx8Yn7UndXQF2ZkkYgvBP0VeWRS6DcQsbHG_sfXa8_Y1lsDp.S7TuDJf5IttkNFK2eLrLKvocR6caykMMLWEzK6RXeDigm.GPKWxXt3dmKmAItL3RoO0VUHk; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:37:21 GMT'), (b'set-cookie', b'_cfuvid=.RHojCi1mMTHctoScEYvRQeAcC3mDG_yl1M6sid.68c-1779948440.6474936-1.0.1.1-JxWF3fa6pLDHWvGv40NmFFeBDe2NdSbCWKGvcg_wVGg; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), (b'CF-Ray', b'a02b141a0d99b333-BOM'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'X-Content-Type-Options', b'nosniff'), (b'x-error-json', b'ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIkluY29ycmVjdCBBUEkga2V5IHByb3ZpZGVkOiBzay1wcm9qLSoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqQlhRQS4gWW91IGNhbiBmaW5kIHlvdXIgQVBJIGtleSBhdCBodHRwczovL3BsYXRmb3JtLm9wZW5haS5jb20vYWNjb3VudC9hcGkta2V5cy4iLAogICAgInR5cGUiOiAiaW52YWxpZF9yZXF1ZXN0X2Vycm9yIiwKICAgICJjb2RlIjogImludmFsaWRfYXBpX2tleSIsCiAgICAicGFyYW0iOiBudWxsCiAgfSwKICAic3RhdHVzIjogNDAxCn0='), (b'x-openai-authorization-error', b'401'), (b'x-openai-ide-error-code', b'invalid_api_key'), (b'x-openai-internal-caller', b'unknown_through_ide'), (b'x-openai-proxy-wasm', b'v0.1'), (b'x-request-id', b'req_fc4a10239f754225af17d7a6d1ba8a41'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2026-05-28 06:07:21  httpcore.http11            DEBUG     receive_response_body.started request=<Request [b'POST']>
+2026-05-28 06:07:21  httpcore.http11            DEBUG     receive_response_body.complete
+2026-05-28 06:07:21  httpcore.http11            DEBUG     response_closed.started
+2026-05-28 06:07:21  httpcore.http11            DEBUG     response_closed.complete
+2026-05-28 06:07:21  openai._base_client        DEBUG     HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 28 May 2026 06:07:21 GMT'), ('content-type', 'text/plain'), ('content-length', '410'), ('connection', 'keep-alive'), ('set-cookie', '__cf_bm=S6koyd6w.z.U55Xm01emlL_fm19ML4cBPm3EAv2JlXU-1779948440.6474936-1.0.1.1-uk0p04Hzgx8Yn7UndXQF2ZkkYgvBP0VeWRS6DcQsbHG_sfXa8_Y1lsDp.S7TuDJf5IttkNFK2eLrLKvocR6caykMMLWEzK6RXeDigm.GPKWxXt3dmKmAItL3RoO0VUHk; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:37:21 GMT'), ('set-cookie', '_cfuvid=.RHojCi1mMTHctoScEYvRQeAcC3mDG_yl1M6sid.68c-1779948440.6474936-1.0.1.1-JxWF3fa6pLDHWvGv40NmFFeBDe2NdSbCWKGvcg_wVGg; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), ('cf-ray', 'a02b141a0d99b333-BOM'), ('cf-cache-status', 'DYNAMIC'), ('server', 'cloudflare'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('access-control-expose-headers', 'CF-Ray'), ('access-control-expose-headers', 'CF-Ray'), ('x-content-type-options', 'nosniff'), ('x-error-json', 'ewogICJlcnJvciI6IHsKICAgICJtZXNzYWdlIjogIkluY29ycmVjdCBBUEkga2V5IHByb3ZpZGVkOiBzay1wcm9qLSoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqQlhRQS4gWW91IGNhbiBmaW5kIHlvdXIgQVBJIGtleSBhdCBodHRwczovL3BsYXRmb3JtLm9wZW5haS5jb20vYWNjb3VudC9hcGkta2V5cy4iLAogICAgInR5cGUiOiAiaW52YWxpZF9yZXF1ZXN0X2Vycm9yIiwKICAgICJjb2RlIjogImludmFsaWRfYXBpX2tleSIsCiAgICAicGFyYW0iOiBudWxsCiAgfSwKICAic3RhdHVzIjogNDAxCn0='), ('x-openai-authorization-error', '401'), ('x-openai-ide-error-code', 'invalid_api_key'), ('x-openai-internal-caller', 'unknown_through_ide'), ('x-openai-proxy-wasm', 'v0.1'), ('x-request-id', 'req_fc4a10239f754225af17d7a6d1ba8a41'), ('alt-svc', 'h3=":443"; ma=86400')])
+2026-05-28 06:07:21  openai._base_client        DEBUG     request_id: req_fc4a10239f754225af17d7a6d1ba8a41
+2026-05-28 06:07:21  openai._base_client        DEBUG     Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1050, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-05-28 06:07:21  openai._base_client        DEBUG     Not retrying
+2026-05-28 06:07:21  openai._base_client        DEBUG     Re-raising status error
+2026-05-28 06:07:21  LiteLLM                    DEBUG     openai.py: Received openai error - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-05-28 06:07:21  LiteLLM                    DEBUG     RAW RESPONSE:
+Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+
+2026-05-28 06:07:21  LiteLLM                    DEBUG     Logging Details: logger_fn - None | callable(logger_fn) - False
+2026-05-28 06:07:21  LiteLLM                    DEBUG     Logging Details LiteLLM-Failure Call: []
+2026-05-28 06:07:21  HubAgent                   ERROR     Unhandled error for module InvoiceCalculator
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 852, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 780, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 503, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 478, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2698, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2670, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 863, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 169, in _process_module
+    analysis, spec, design = await self._analyze_and_design(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, source_code, module_state.source_file_path, request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 218, in _analyze_and_design
+    analysis = UnderstandAgent().run(source_code, name, source_file_path)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\analyze_and_design\understand_agent.py", line 24, in run
+    response = self._call_llm(
+        system=UNDERSTAND_SYSTEM,
+    ...<9 lines>...
+        max_tokens=4096,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\base_agent.py", line 59, in _call_llm
+    response = litellm.completion(**kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1769, in wrapper
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1590, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 543, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.
+2026-05-28 06:07:23  state.migration_manager    INFO      [InvoiceCalculator] → failed (litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: sk-proj-********************************************************************************************************************************************************BXQA. You can find your API key at https://platform.openai.com/account/api-keys.)
+2026-05-28 06:07:24  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 06:20:34  utils.logger               DEBUG     Logging initialised — level=DEBUG  file=C:\Users\MrUtkarsh\data_code_conversion\logs\code_conversion_2026_05_28.log
+2026-05-28 06:20:34  asyncio                    DEBUG     Using proactor: IocpProactor
+2026-05-28 06:20:34  HubAgent                   DEBUG     Starting MCP infrastructure services for output_dir=C:\Users\MrUtkarsh\data_code_conversion\sample_java
+2026-05-28 06:20:35  FilesystemClient           INFO      Connected → filesystem_server.py
+2026-05-28 06:20:35  HubAgent                   DEBUG     FilesystemClient started
+2026-05-28 06:20:36  ExecutionClient            INFO      Connected → execution_server.py
+2026-05-28 06:20:36  HubAgent                   DEBUG     ExecutionClient started
+2026-05-28 06:20:38  VectorDBClient             INFO      Connected → vectordb_server.py
+2026-05-28 06:20:38  HubAgent                   DEBUG     VectorDBClient started (in-memory)
+2026-05-28 06:20:39  GitHubClient               INFO      Connected → github_server.py
+2026-05-28 06:20:39  HubAgent                   DEBUG     GitHubClient started
+2026-05-28 06:20:39  state.migration_manager    INFO      Migration pipeline initialised
+2026-05-28 06:20:39  HubAgent                   DEBUG     State file: C:\Users\MrUtkarsh\data_code_conversion\sample_java\migration_state.json
+2026-05-28 06:20:39  HubAgent                   DEBUG     Discovered 1 Java files:
+2026-05-28 06:20:39  HubAgent                   DEBUG       C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 06:20:39  HubAgent                   DEBUG     Registered 1 modules for migration
+2026-05-28 06:20:39  HubAgent                   DEBUG     [InvoiceCalculator] Reading source file: C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java
+2026-05-28 06:20:39  HubAgent                   DEBUG     [InvoiceCalculator] Source loaded — 121 lines  4776 chars
+2026-05-28 06:20:39  HubAgent                   DEBUG     [InvoiceCalculator] Step 1 start — source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  start_step=1a
+2026-05-28 06:20:39  state.migration_manager    INFO      [InvoiceCalculator] → analyzing
+2026-05-28 06:20:39  UnderstandAgent            DEBUG     Initialised — model=gpt-4o  provider=openai
+2026-05-28 06:20:39  UnderstandAgent            INFO      Analysing module: InvoiceCalculator
+2026-05-28 06:20:39  UnderstandAgent            DEBUG     [InvoiceCalculator] source_file=C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\sample_java\InvoiceCalculator.java  source_lines=121  source_chars=4776
+2026-05-28 06:20:39  UnderstandAgent            DEBUG     LLM call — model=gpt-4o  max_tokens=4096  messages=2  system_chars=1089
+2026-05-28 06:20:39  LiteLLM                    DEBUG     
+
+2026-05-28 06:20:39  LiteLLM                    DEBUG     [92mRequest to litellm:[0m
+2026-05-28 06:20:39  LiteLLM                    DEBUG     [92mlitellm.completion(model='gpt-4o', messages=[{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], max_tokens=4096)[0m
+2026-05-28 06:20:39  LiteLLM                    DEBUG     
+
+2026-05-28 06:20:39  LiteLLM                    DEBUG     Removing thought signatures from tool call IDs for non-Gemini model
+2026-05-28 06:20:39  LiteLLM                    DEBUG     self.optional_params: {}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     SYNC kwargs[caching]: False; litellm.cache: None; kwargs.get('cache')['no-cache']: False
+2026-05-28 06:20:39  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 06:20:39  LiteLLM                    INFO      
+LiteLLM completion() model= gpt-4o; provider = openai
+2026-05-28 06:20:39  LiteLLM                    DEBUG     
+LiteLLM: Params passed to completion() {'model': 'gpt-4o', 'functions': None, 'function_call': None, 'temperature': None, 'top_p': None, 'n': None, 'stream': None, 'stream_options': None, 'stop': None, 'max_tokens': 4096, 'max_completion_tokens': None, 'modalities': None, 'prediction': None, 'audio': None, 'presence_penalty': None, 'frequency_penalty': None, 'logit_bias': None, 'user': None, 'custom_llm_provider': 'openai', 'response_format': None, 'seed': None, 'tools': None, 'tool_choice': None, 'max_retries': None, 'logprobs': None, 'top_logprobs': None, 'extra_headers': None, 'api_version': None, 'parallel_tool_calls': None, 'drop_params': None, 'allowed_openai_params': None, 'reasoning_effort': None, 'verbosity': None, 'additional_drop_params': None, 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'thinking': None, 'web_search_options': None, 'safety_identifier': None, 'service_tier': None}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     
+LiteLLM: Non-Default params passed to completion() {'max_tokens': 4096}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     Final returned optional params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     self.optional_params: {'max_tokens': 4096, 'extra_body': {}}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     checking potential_model_names in litellm.model_cost: {'split_model': 'gpt-4o', 'combined_model_name': 'openai/gpt-4o', 'stripped_model_name': 'gpt-4o', 'combined_stripped_model_name': 'openai/gpt-4o', 'custom_llm_provider': 'openai'}
+2026-05-28 06:20:39  LiteLLM                    DEBUG     [92m
+
+POST Request Sent from LiteLLM:
+curl -X POST \
+https://api.openai.com/v1/ \
+-d '{'model': 'gpt-4o', 'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'max_tokens': 4096, 'extra_body': {}}'
+[0m
+
+2026-05-28 06:20:39  openai._base_client        DEBUG     Request options: {'method': 'post', 'url': '/chat/completions', 'headers': {'X-Stainless-Raw-Response': 'true'}, 'timeout': 600.0, 'files': None, 'idempotency_key': 'stainless-python-retry-b4be9812-154c-4e81-bb77-a69ba08086c9', 'content': None, 'json_data': {'messages': [{'role': 'system', 'content': 'You are an expert Java code analyst and reverse-engineer.\nYour job is to extract a complete, structured understanding of a Java class or module.\n\nFor the given source code produce a JSON object with this exact schema:\n{\n  "module_name": "<name>",\n  "business_logic": ["<plain-English description of each method>"],\n  "data_structures": [{"name": "<name>", "type": "<class|interface|enum|record|...>", "fields": [...]}],\n  "external_api_calls": ["<ClassName>.<method>(<args>) — e.g. jdbcTemplate.query(...), restTemplate.getForObject(...)"],\n  "control_flow": {\n    "methods": ["<public/private method signatures>"],\n    "loops": ["<describe each for/while/do-while/for-each>"],\n    "exception_handlers": ["<try-catch-finally blocks and throws declarations>"]\n  },\n  "complexity_score": <0.0-1.0 float>,\n  "raw_summary": "<2-3 sentence human summary>"\n}\n\nRules:\n- Be exhaustive — do not silently drop any construct.\n- complexity_score: 0.0 = trivial POJO/DTO, 1.0 = deeply nested concurrency, multiple checked exceptions, heavy reflection.\n- Output ONLY the JSON object, no markdown fences.'}, {'role': 'user', 'content': 'Analyse this Java module named \'InvoiceCalculator\'.\n\n```java\npackage com.example.billing;\n\nimport java.math.BigDecimal;\nimport java.math.RoundingMode;\nimport java.util.List;\n\n/**\n * Calculates invoice totals, applies discounts, and computes VAT\n * for a retail billing system.\n */\npublic class InvoiceCalculator {\n\n    public static final BigDecimal MAX_DISCOUNT = new BigDecimal("0.30");\n    public static final BigDecimal DEFAULT_VAT  = new BigDecimal("0.20");\n\n    // ── Data classes ──────────────────────────────────────────────────────\n\n    public static class LineItem {\n        private final String     productCode;\n        private final String     description;\n        private final int        quantity;\n        private final BigDecimal unitPrice;\n\n        public LineItem(String productCode, String description,\n                        int quantity, BigDecimal unitPrice) {\n            this.productCode = productCode;\n            this.description = description;\n            this.quantity    = quantity;\n            this.unitPrice   = unitPrice;\n        }\n\n        public String     getProductCode() { return productCode; }\n        public String     getDescription() { return description; }\n        public int        getQuantity()    { return quantity; }\n        public BigDecimal getUnitPrice()   { return unitPrice; }\n    }\n\n    public static class Invoice {\n        private final String         invoiceNumber;\n        private final String         customerId;\n        private final List<LineItem> items;\n        private final BigDecimal     discountPct;\n        private final BigDecimal     vatRate;\n\n        public Invoice(String invoiceNumber, String customerId,\n                       List<LineItem> items,\n                       BigDecimal discountPct, BigDecimal vatRate) {\n            this.invoiceNumber = invoiceNumber;\n            this.customerId    = customerId;\n            this.items         = items;\n            this.discountPct   = discountPct;\n            this.vatRate       = vatRate;\n        }\n\n        public String         getInvoiceNumber() { return invoiceNumber; }\n        public String         getCustomerId()    { return customerId; }\n        public List<LineItem> getItems()         { return items; }\n        public BigDecimal     getDiscountPct()   { return discountPct; }\n        public BigDecimal     getVatRate()       { return vatRate; }\n    }\n\n    // ── Business logic ────────────────────────────────────────────────────\n\n    /**\n     * Calculates the subtotal as the sum of (quantity × unitPrice) for all line items.\n     */\n    public BigDecimal calcSubtotal(Invoice invoice) {\n        BigDecimal total = BigDecimal.ZERO;\n        for (LineItem item : invoice.getItems()) {\n            BigDecimal lineTotal = item.getUnitPrice()\n                    .multiply(new BigDecimal(item.getQuantity()));\n            total = total.add(lineTotal);\n        }\n        return total.setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Applies a percentage discount to the subtotal.\n     *\n     * @throws IllegalArgumentException if discountPct is negative or exceeds MAX_DISCOUNT (0.30)\n     */\n    public BigDecimal applyDiscount(BigDecimal subtotal, BigDecimal discountPct) {\n        if (discountPct.compareTo(BigDecimal.ZERO) < 0\n                || discountPct.compareTo(MAX_DISCOUNT) > 0) {\n            throw new IllegalArgumentException(\n                    "Discount out of range: " + discountPct\n                    + " (must be 0.00–" + MAX_DISCOUNT + ")");\n        }\n        BigDecimal multiplier = BigDecimal.ONE.subtract(discountPct);\n        return subtotal.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the VAT amount for a given base amount and VAT rate.\n     */\n    public BigDecimal calcVAT(BigDecimal amount, BigDecimal vatRate) {\n        return amount.multiply(vatRate).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Calculates the invoice grand total: (subtotal − discount) + VAT.\n     *\n     * @throws IllegalArgumentException if the invoice\'s discountPct is out of range\n     */\n    public BigDecimal calcTotal(Invoice invoice) {\n        BigDecimal subtotal    = calcSubtotal(invoice);\n        BigDecimal discounted  = applyDiscount(subtotal, invoice.getDiscountPct());\n        BigDecimal vat         = calcVAT(discounted, invoice.getVatRate());\n        return discounted.add(vat).setScale(2, RoundingMode.HALF_UP);\n    }\n\n    /**\n     * Prints a formatted invoice summary to standard output.\n     */\n    public void printInvoiceSummary(Invoice invoice) {\n        BigDecimal total = calcTotal(invoice);\n        System.out.println("Invoice:          " + invoice.getInvoiceNumber());\n        System.out.println("Customer:         " + invoice.getCustomerId());\n        System.out.printf ("Total (inc VAT):  %.2f%n", total);\n    }\n}\n\n```'}], 'model': 'gpt-4o', 'max_tokens': 4096}, 'extra_json': {}}
+2026-05-28 06:20:39  openai._base_client        DEBUG     Sending HTTP Request: POST https://api.openai.com/v1/chat/completions
+2026-05-28 06:20:39  httpcore.connection        DEBUG     connect_tcp.started host='api.openai.com' port=443 local_address=None timeout=600.0 socket_options=None
+2026-05-28 06:20:39  httpcore.connection        DEBUG     connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002DC71676210>
+2026-05-28 06:20:39  httpcore.connection        DEBUG     start_tls.started ssl_context=<ssl.SSLContext object at 0x000002DC6F224BB0> server_hostname='api.openai.com' timeout=600.0
+2026-05-28 06:20:40  httpcore.connection        DEBUG     start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000002DC71754E90>
+2026-05-28 06:20:40  httpcore.http11            DEBUG     send_request_headers.started request=<Request [b'POST']>
+2026-05-28 06:20:40  httpcore.http11            DEBUG     send_request_headers.complete
+2026-05-28 06:20:40  httpcore.http11            DEBUG     send_request_body.started request=<Request [b'POST']>
+2026-05-28 06:20:40  httpcore.http11            DEBUG     send_request_body.complete
+2026-05-28 06:20:40  httpcore.http11            DEBUG     receive_response_headers.started request=<Request [b'POST']>
+2026-05-28 06:20:40  httpcore.http11            DEBUG     receive_response_headers.complete return_value=(b'HTTP/1.1', 401, b'Unauthorized', [(b'Date', b'Thu, 28 May 2026 06:20:40 GMT'), (b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'335'), (b'Connection', b'keep-alive'), (b'set-cookie', b'__cf_bm=FhRtxQ3sR5P1ag6zuDNnqvCw7A1fk4SGTqBHmtON6Xg-1779949239.9733224-1.0.1.1-kM183exb3eQwqHqa0DA6E.9.eQZbJlM3jJF394r6r3Mut5G6Pt7euLaoEBxG10QhpCqgoeh_L__RJOflCSLApT01jfkebPIAUEgqOGIC_o4RqViuaFyXRMw6JkDEfRML; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:50:40 GMT'), (b'set-cookie', b'_cfuvid=.OiHc0PXRmpzOjAUecpVY8okv0QKp8JtQ76n2BPehZg-1779949239.9733224-1.0.1.1-9rvq2Z4zOWgixMlMUWoIaa1FFrLRSU9AuYXmM3i0KR4; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), (b'CF-Ray', b'a02b279ddde448f2-BOM'), (b'CF-Cache-Status', b'DYNAMIC'), (b'Server', b'cloudflare'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'Access-Control-Expose-Headers', b'CF-Ray'), (b'X-Content-Type-Options', b'nosniff'), (b'x-openai-proxy-wasm', b'v0.1'), (b'x-request-id', b'req_d9954fea856e47d9a6996092374f219e'), (b'alt-svc', b'h3=":443"; ma=86400')])
+2026-05-28 06:20:40  httpcore.http11            DEBUG     receive_response_body.started request=<Request [b'POST']>
+2026-05-28 06:20:40  httpcore.http11            DEBUG     receive_response_body.complete
+2026-05-28 06:20:40  httpcore.http11            DEBUG     response_closed.started
+2026-05-28 06:20:40  httpcore.http11            DEBUG     response_closed.complete
+2026-05-28 06:20:40  openai._base_client        DEBUG     HTTP Response: POST https://api.openai.com/v1/chat/completions "401 Unauthorized" Headers([('date', 'Thu, 28 May 2026 06:20:40 GMT'), ('content-type', 'application/json; charset=utf-8'), ('content-length', '335'), ('connection', 'keep-alive'), ('set-cookie', '__cf_bm=FhRtxQ3sR5P1ag6zuDNnqvCw7A1fk4SGTqBHmtON6Xg-1779949239.9733224-1.0.1.1-kM183exb3eQwqHqa0DA6E.9.eQZbJlM3jJF394r6r3Mut5G6Pt7euLaoEBxG10QhpCqgoeh_L__RJOflCSLApT01jfkebPIAUEgqOGIC_o4RqViuaFyXRMw6JkDEfRML; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com; Expires=Thu, 28 May 2026 06:50:40 GMT'), ('set-cookie', '_cfuvid=.OiHc0PXRmpzOjAUecpVY8okv0QKp8JtQ76n2BPehZg-1779949239.9733224-1.0.1.1-9rvq2Z4zOWgixMlMUWoIaa1FFrLRSU9AuYXmM3i0KR4; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.openai.com'), ('cf-ray', 'a02b279ddde448f2-BOM'), ('cf-cache-status', 'DYNAMIC'), ('server', 'cloudflare'), ('strict-transport-security', 'max-age=31536000; includeSubDomains; preload'), ('vary', 'Origin'), ('access-control-expose-headers', 'CF-Ray'), ('access-control-expose-headers', 'CF-Ray'), ('x-content-type-options', 'nosniff'), ('x-openai-proxy-wasm', 'v0.1'), ('x-request-id', 'req_d9954fea856e47d9a6996092374f219e'), ('alt-svc', 'h3=":443"; ma=86400')])
+2026-05-28 06:20:40  openai._base_client        DEBUG     request_id: req_d9954fea856e47d9a6996092374f219e
+2026-05-28 06:20:40  openai._base_client        DEBUG     Encountered httpx.HTTPStatusError
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1050, in request
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-05-28 06:20:40  openai._base_client        DEBUG     Not retrying
+2026-05-28 06:20:40  openai._base_client        DEBUG     Re-raising status error
+2026-05-28 06:20:40  LiteLLM                    DEBUG     openai.py: Received openai error - Error code: 401 - {'error': {'message': 'Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2026-05-28 06:20:40  LiteLLM                    DEBUG     RAW RESPONSE:
+Error code: 401 - {'error': {'message': 'Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+
+2026-05-28 06:20:40  LiteLLM                    DEBUG     Logging Details: logger_fn - None | callable(logger_fn) - False
+2026-05-28 06:20:40  LiteLLM                    DEBUG     Logging Details LiteLLM-Failure Call: []
+2026-05-28 06:20:40  HubAgent                   ERROR     Unhandled error for module InvoiceCalculator
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 852, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 780, in completion
+    ) = self.make_sync_openai_chat_completion_request(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        openai_client=openai_client,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        logging_obj=logging_obj,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\logging_utils.py", line 344, in sync_wrapper
+    result = func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 503, in make_sync_openai_chat_completion_request
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 478, in make_sync_openai_chat_completion_request
+    raw_response = openai_client.chat.completions.with_raw_response.create(
+        **data, timeout=timeout
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2698, in completion
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 2670, in completion
+    response = openai_chat_completions.completion(
+        model=model,
+    ...<16 lines>...
+        shared_session=shared_session,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\llms\openai\openai.py", line 863, in completion
+    raise OpenAIError(
+    ...<4 lines>...
+    )
+litellm.llms.openai.common_utils.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 169, in _process_module
+    analysis, spec, design = await self._analyze_and_design(
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        name, source_code, module_state.source_file_path, request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\hub_agent.py", line 218, in _analyze_and_design
+    analysis = UnderstandAgent().run(source_code, name, source_file_path)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\analyze_and_design\understand_agent.py", line 24, in run
+    response = self._call_llm(
+        system=UNDERSTAND_SYSTEM,
+    ...<9 lines>...
+        max_tokens=4096,
+    )
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\agents\base_agent.py", line 59, in _call_llm
+    response = litellm.completion(**kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1769, in wrapper
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\utils.py", line 1590, in wrapper
+    result = original_function(*args, **kwargs)
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\main.py", line 4411, in completion
+    raise exception_type(
+          ~~~~~~~~~~~~~~^
+        model=model,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        extra_kwargs=kwargs,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 2456, in exception_type
+    raise e
+  File "C:\Users\MrUtkarsh\PycharmProjects\vb_code_conversion\.venv\Lib\site-packages\litellm\litellm_core_utils\exception_mapping_utils.py", line 543, in exception_type
+    raise AuthenticationError(
+    ...<5 lines>...
+    )
+litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.
+2026-05-28 06:20:42  state.migration_manager    INFO      [InvoiceCalculator] → failed (litellm.AuthenticationError: AuthenticationError: OpenAIException - Incorrect API key provided: DTlH29tJ*************************************************************************Cdmc. You can find your API key at https://platform.openai.com/account/api-keys.)
+2026-05-28 06:20:43  asyncio                    DEBUG     Using proactor: IocpProactor
