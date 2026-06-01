@@ -12,3 +12,6 @@ Missing closing '}' in statement block or type definition.
 
 
  [ERR] Python  found but 3.10+ is required.
+
+ [ERR] Could not determine Python version. Raw output: ''
+
