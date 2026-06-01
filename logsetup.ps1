@@ -9,3 +9,6 @@ At C:\Users\MrUtkarsh\PycharmProjects\email_compliance\setup.ps1:67 char:8
 Missing closing '}' in statement block or type definition.
     + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
     + FullyQualifiedErrorId : TerminatorExpectedAtEndOfString
+
+
+ [ERR] Python  found but 3.10+ is required.
