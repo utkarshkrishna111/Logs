@@ -1,0 +1,9 @@
+commad executed on pycharm terminal cli: python main.py email_data
+
+error received:
+
+PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> python main.py email_data
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\main.py", line 57, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
