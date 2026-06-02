@@ -58,3 +58,21 @@ Traceback (most recent call last):
   File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\pymupdf\extra.py", line 10, in <module>
     from . import _extra
 ImportError: DLL load failed while importing _extra: The specified module could not be found.
+
+
+--------------------------------------------------------------------------------
+
+
+[fix] Replacing PyMuPDF with pymupdf (bundled DLL version) ...
+  [fix] pymupdf installed successfully.
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\main.py", line 192, in <module>
+    __import__(_import_name)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\fitz\__init__.py", line 2, in <module>
+    from pymupdf import *
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\pymupdf\__init__.py", line 33, in <module>
+    from . import extra
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\pymupdf\extra.py", line 10, in <module>
+    from . import _extra
+ImportError: DLL load failed while importing _extra: The specified module could not be found.
