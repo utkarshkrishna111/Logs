@@ -14,3 +14,31 @@ ModuleNotFoundError: No module named 'dotenv'
 ERROR: python-dotenv is not installed.
 Run:  pip install python-dotenv   (inside your activated venv)
 (.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> 
+
+
+---------------------------------
+
+
+(.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> python main.py email_data
+ERROR: python-dotenv is not installed.
+Run:  pip install python-dotenv   (inside your activated venv)
+(.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> python main.py email_data
+  [auto-install] python-dotenv not found - installing ...
+WARNING: Cache entry deserialization failed, entry ignored
+  [auto-install] python-dotenv installed.
+  [auto-install] pyyaml not found - installing ...
+WARNING: Cache entry deserialization failed, entry ignored
+  [auto-install] pyyaml installed.
+2026-06-02 07:23:13 [INFO    ] main - Email Compliance AI Agent starting up
+2026-06-02 07:23:13 [INFO    ] main - Log level  : INFO
+2026-06-02 07:23:13 [INFO    ] main - INFO log   : C:\Users\MrUtkarsh\PycharmProjects\email_compliance\logs\compliance_20260602_072313.info.log
+2026-06-02 07:23:13 [INFO    ] main - Mode: folder scan -> email_data
+2026-06-02 07:23:13 [INFO    ] main - Found 2 file(s): ['test_emails.pdf', 'test_emails.xlsx']
+2026-06-02 07:23:13 [INFO    ] main.pipeline - ============================================================
+2026-06-02 07:23:13 [INFO    ] main.pipeline -   Email Compliance AI Agent  -  Pipeline Start
+2026-06-02 07:23:13 [INFO    ] main.pipeline - ============================================================
+2026-06-02 07:23:13 [INFO    ] src.config_loader - Compliance config loaded from C:\Users\MrUtkarsh\PycharmProjects\email_compliance\config\compliance_matrix.yaml  (6 categories)
+2026-06-02 07:23:13 [INFO    ] main.pipeline - Config loaded: 6 categories
+2026-06-02 07:23:13 [ERROR   ] main.pipeline - Failed to read 'email_data\test_emails.pdf': PyMuPDF is required: pip install PyMuPDF
+2026-06-02 07:23:13 [ERROR   ] main.pipeline - Failed to read 'email_data\test_emails.xlsx': pandas is required: pip install pandas openpyxl
+2026-06-02 07:23:13 [ERROR   ] main.pipeline - No emails could be loaded. Aborting.
