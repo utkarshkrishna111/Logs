@@ -8,3 +8,17 @@ Step 2 — Activate your virtual environment:
 Step 3 — Start the server:
   python main.py --server
 Step 4 — Come back to this page and click Retry
+
+
+API Server Not Running
+The dashboard cannot connect to the Flask API at localhost:5050.
+You must start the server before using the dashboard.
+
+Step 1 — Open a PowerShell terminal in your project folder
+Step 2 — Activate your virtual environment:
+  .\.venv\Scripts\Activate.ps1
+Step 3 — Start the server:
+  python main.py --server
+Step 4 — Open the dashboard in your browser at:
+  http://localhost:5050
+⚠ Do NOT open dashboard.html from File Explorer — use the URL above.
