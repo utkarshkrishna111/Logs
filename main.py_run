@@ -42,3 +42,19 @@ WARNING: Cache entry deserialization failed, entry ignored
 2026-06-02 07:23:13 [ERROR   ] main.pipeline - Failed to read 'email_data\test_emails.pdf': PyMuPDF is required: pip install PyMuPDF
 2026-06-02 07:23:13 [ERROR   ] main.pipeline - Failed to read 'email_data\test_emails.xlsx': pandas is required: pip install pandas openpyxl
 2026-06-02 07:23:13 [ERROR   ] main.pipeline - No emails could be loaded. Aborting.
+
+------------------------------------------------------------------------------------------
+
+
+(.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> python main.py email_data
+Traceback (most recent call last):
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\main.py", line 158, in <module>
+    __import__(_import_name)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\fitz\__init__.py", line 2, in <module>
+    from pymupdf import *
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\pymupdf\__init__.py", line 33, in <module>
+    from . import extra
+  File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\.venv\Lib\site-packages\pymupdf\extra.py", line 10, in <module>
+    from . import _extra
+ImportError: DLL load failed while importing _extra: The specified module could not be found.
