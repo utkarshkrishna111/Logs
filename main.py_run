@@ -7,3 +7,10 @@ Traceback (most recent call last):
   File "C:\Users\MrUtkarsh\PycharmProjects\email_compliance\main.py", line 57, in <module>
     from dotenv import load_dotenv
 ModuleNotFoundError: No module named 'dotenv'
+
+
+
+(.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> python main.py email_data
+ERROR: python-dotenv is not installed.
+Run:  pip install python-dotenv   (inside your activated venv)
+(.venv) PS C:\Users\MrUtkarsh\PycharmProjects\email_compliance> 
