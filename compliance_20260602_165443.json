@@ -1,0 +1,834 @@
+{
+  "generated_at": "2026-06-02T16:54:43.588534Z",
+  "run_label": "20260602_165443",
+  "total_emails": 23,
+  "non_compliant": 19,
+  "compliant": 4,
+  "findings": [
+    {
+      "id": "pdf_test_emails_1",
+      "source": "email_data\\test_emails.pdf",
+      "from": "",
+      "to": "",
+      "subject": "",
+      "date": "",
+      "categories": [
+        "market_manipulation"
+      ],
+      "intent": "The sender appears to suggest coordinating actions related to the XTEK position before market open.",
+      "confidence": 0.9,
+      "evidence": [
+        "RE: XTEK position - coordinate before open"
+      ],
+      "reasoning": "The phrase 'coordinate before open' suggests potential coordination of actions related to a market position, which could be indicative of market manipulation. However, the email lacks additional context to confirm the exact nature of the coordination.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The phrase 'coordinate before open' aligns with potential market manipulation, and the preliminary finding is accurate given the context provided.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "pdf_test_emails_2",
+      "source": "email_data\\test_emails.pdf",
+      "from": "james.hartley@alphahedge.com",
+      "to": "sarah.mills@bnkinternal.com",
+      "subject": "",
+      "date": "2024-03-12 07:42",
+      "categories": [
+        "market_manipulation",
+        "change_in_communication",
+        "secrecy"
+      ],
+      "intent": "The sender intends to coordinate trading activity to manipulate the price of XTEK and avoid detection by using off-channel communication.",
+      "confidence": 0.95,
+      "evidence": [
+        "We're both going heavy on XTEK at open — if we coordinate our buy orders around 09:31 we can push the price up 4-5% before the retail crowd notices.",
+        "Don't put this in the system. Call me on the personal number.",
+        "Heads up - between us only"
+      ],
+      "reasoning": "The email explicitly discusses coordinating buy orders to manipulate the price of XTEK, which constitutes market manipulation. Additionally, the sender advises avoiding official systems and suggests using personal communication channels, indicating an attempt to evade surveillance. The phrase 'between us only' further emphasizes secrecy.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate as the email explicitly describes coordinated trading to manipulate the market and emphasizes secrecy through off-channel communication.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "pdf_test_emails_3",
+      "source": "email_data\\test_emails.pdf",
+      "from": "david.chen@bnkinternal.com",
+      "to": "peter.wong@familyoffice.hk",
+      "subject": "",
+      "date": "2024-03-14 18:55",
+      "categories": [
+        "secrecy",
+        "market_manipulation",
+        "change_in_communication"
+      ],
+      "intent": "The sender is sharing non-public information about a takeover to enable the recipient to act on it before the announcement.",
+      "confidence": 0.95,
+      "evidence": [
+        "don't tell anyone I sent this",
+        "Our M&A desk is advising on a takeover of GlobalTech — announcement is Thursday pre-market.",
+        "The offer is at a 32% premium to yesterday's close.",
+        "You didn't hear this from me.",
+        "Delete this after reading.",
+        "Obviously this is MNPI so act carefully but you have time to position."
+      ],
+      "reasoning": "The email contains multiple red flags for non-compliance. The sender explicitly shares material non-public information (MNPI) about a takeover and advises the recipient to act on it. Phrases like 'don't tell anyone,' 'delete this after reading,' and 'you have time to position' indicate secrecy and potential market manipulation. The instruction to delete the email also suggests an attempt to evade surveillance.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate as the email contains clear evidence of sharing MNPI with intent to act on it, along with instructions to maintain secrecy and evade detection.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "pdf_test_emails_4",
+      "source": "email_data\\test_emails.pdf",
+      "from": "raj.mehta@outsidecorp.com",
+      "to": "linda.torres@bnkinternal.com",
+      "subject": "",
+      "date": "2024-03-13 14:10",
+      "categories": [
+        "bribery",
+        "change_in_communication"
+      ],
+      "intent": "The sender is attempting to offer a personal financial incentive to expedite a loan application approval and suggests switching communication channels.",
+      "confidence": 0.95,
+      "evidence": [
+        "I can arrange a EUR 15,000 consulting retainer for you personally if the credit committee approves our loan application by Friday.",
+        "Think of it as a thank-you for fast-tracking.",
+        "My lawyer can set up the structure so it looks clean.",
+        "Switch comms"
+      ],
+      "reasoning": "The email explicitly offers a personal financial incentive ('EUR 15,000 consulting retainer') in exchange for expedited loan approval, which constitutes bribery. Additionally, the phrase 'Switch comms' suggests an attempt to change communication channels, potentially to evade surveillance. Both actions are clear violations of compliance policies.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly offers a personal financial incentive and suggests switching communication channels, aligning with the preliminary finding.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "bribery": {
+          "base_weight": 9.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "pdf_test_emails_5",
+      "source": "email_data\\test_emails.pdf",
+      "from": "anna.kowalski@bnkinternal.com",
+      "to": "tom.baker@bnkinternal.com",
+      "subject": "",
+      "date": "2024-03-15 09:05",
+      "categories": [
+        "change_in_communication"
+      ],
+      "intent": "The sender is instructing the recipient to avoid using email for discussions about the Vega deal and to switch to Signal to avoid leaving a paper trail.",
+      "confidence": 0.95,
+      "evidence": [
+        "Don't put anything about the Vega deal in email.",
+        "Use Signal from now on — I've already set up the group.",
+        "Delete this thread and I'll do the same.",
+        "We can't leave a paper trail on this one."
+      ],
+      "reasoning": "The email explicitly instructs the recipient to avoid using email for certain discussions, switch to an off-channel communication method (Signal), and delete the email thread to avoid leaving a record. This indicates a deliberate attempt to evade surveillance, which falls under the 'change_in_communication' category.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email clearly instructs a switch to Signal and deletion of the thread to avoid leaving a record, aligning with the 'change_in_communication' category.",
+      "priority_score": 69,
+      "priority_band": "HIGH",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "pdf_test_emails_6",
+      "source": "email_data\\test_emails.pdf",
+      "from": "helen.shaw@bnkinternal.com",
+      "to": "ops.team@bnkinternal.com",
+      "subject": "",
+      "date": "2024-03-18 09:00",
+      "categories": [],
+      "intent": "To share the Q1 settlement reconciliation report and set a deadline for corrections.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email is a routine communication sharing a report and setting a deadline for corrections. It does not contain any language or behavior indicative of non-compliance categories such as market manipulation, bribery, secrecy, or other violations.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is routine and does not indicate any compliance concerns.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_test_emails_1",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "james.hartley@alphahedge.com",
+      "to": "sarah.mills@bnkinternal.com",
+      "subject": "RE: XTEK position - coordinate before open",
+      "date": "2024-03-12 07:42",
+      "categories": [
+        "market_manipulation",
+        "change_in_communication"
+      ],
+      "intent": "The sender intends to coordinate buy orders to manipulate the price of XTEK and avoid detection by using off-channel communication.",
+      "confidence": 0.95,
+      "evidence": [
+        "if we coordinate our buy orders around 09:31 we can push the price up 4-5% before the retail crowd notices",
+        "Once it spikes, we unload",
+        "Don't put this in the system. Call me on the personal number."
+      ],
+      "reasoning": "The email explicitly discusses coordinating buy orders to artificially inflate the price of XTEK, which constitutes market manipulation. Additionally, the sender instructs the recipient to avoid documenting the plan and to use personal communication channels, indicating an attempt to evade surveillance.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly outlines a plan to manipulate the market and evade detection, aligning with the preliminary finding.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_2",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "raj.mehta@outsidecorp.com",
+      "to": "linda.torres@bnkinternal.com",
+      "subject": "Consulting arrangement",
+      "date": "2024-03-13 14:10",
+      "categories": [
+        "bribery",
+        "employee_ethics"
+      ],
+      "intent": "The sender is offering a personal financial incentive to the recipient in exchange for expedited approval of a loan application.",
+      "confidence": 0.95,
+      "evidence": [
+        "I can arrange a €15,000 consulting retainer for you personally if the credit committee approves our loan application by Friday.",
+        "Think of it as a thank-you for fast-tracking.",
+        "My lawyer can set up the structure so it looks clean."
+      ],
+      "reasoning": "The email explicitly offers a personal financial benefit (€15,000 consulting retainer) to the recipient in exchange for influencing the credit committee's decision to approve a loan application. This constitutes bribery and a violation of employee ethics, as it involves a conflict of interest and an attempt to improperly influence a financial decision.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email clearly outlines an offer of personal financial gain in exchange for expedited loan approval, which constitutes bribery and a violation of employee ethics.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "bribery": {
+          "base_weight": 9.0
+        },
+        "employee_ethics": {
+          "base_weight": 7.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_3",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "david.chen@bnkinternal.com",
+      "to": "peter.wong@familyoffice.hk",
+      "subject": "Heads up - between us only",
+      "date": "2024-03-14 18:55",
+      "categories": [
+        "secrecy",
+        "market_manipulation",
+        "change_in_communication"
+      ],
+      "intent": "The sender is sharing non-public information about an upcoming takeover to allow the recipient to act on it.",
+      "confidence": 0.95,
+      "evidence": [
+        "don't tell anyone I sent this",
+        "Our M&A desk is advising on a takeover of GlobalTech — announcement is Thursday pre-market",
+        "You didn't hear this from me",
+        "Delete this after reading",
+        "Obviously this is MNPI so act carefully but you have time to position"
+      ],
+      "reasoning": "The email contains multiple red flags for non-compliance. The sender explicitly shares material non-public information (MNPI) about a takeover, instructs the recipient to keep it secret, and suggests deleting the email after reading. This indicates a clear intent to facilitate insider trading and evade detection.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate as the email explicitly shares MNPI, encourages secrecy, and suggests actions indicative of insider trading intent.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_4",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "anna.kowalski@bnkinternal.com",
+      "to": "tom.baker@bnkinternal.com",
+      "subject": "Switch comms",
+      "date": "2024-03-15 09:05",
+      "categories": [
+        "change_in_communication",
+        "secrecy"
+      ],
+      "intent": "The sender is instructing the recipient to switch to an off-channel communication method and delete the email to avoid leaving a record about the Vega deal.",
+      "confidence": 0.95,
+      "evidence": [
+        "Don't put anything about the Vega deal in email.",
+        "Use Signal from now on — I've already set up the group.",
+        "Delete this thread and I'll do the same.",
+        "We can't leave a paper trail on this one."
+      ],
+      "reasoning": "The email explicitly instructs the recipient to avoid using email for discussions about the Vega deal, switch to an off-channel communication method (Signal), and delete the email thread to avoid leaving a record. This indicates an attempt to evade surveillance and maintain secrecy, which are clear violations of compliance policies.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly instructs the recipient to switch to an off-channel communication method and delete the thread, aligning with the preliminary finding.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_5",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "marcus.lee@bnkinternal.com",
+      "to": "compliance@bnkinternal.com",
+      "subject": "Question about personal account",
+      "date": "2024-03-15 11:30",
+      "categories": [
+        "employee_ethics",
+        "conflict_of_interest",
+        "insider_trading_risk"
+      ],
+      "intent": "The sender is seeking clarification on whether their personal trading activity and familial relationship with a client executive are compliant.",
+      "confidence": 0.95,
+      "evidence": [
+        "I've been trading Meridian Energy options in my personal account for the past month.",
+        "I know we're advising Meridian on their bond issuance but I figured it's technically a different product so it shouldn't matter.",
+        "Also, my brother-in-law is the CFO there."
+      ],
+      "reasoning": "The sender disclosed trading in their personal account involving a company that the organization is advising, which raises potential conflict of interest concerns. Additionally, the sender's familial relationship with the CFO of the same company could indicate a risk of information leakage or misuse of material non-public information (MNPI). While the sender is seeking guidance, these actions may already constitute a violation of employee ethics and confidentiality policies.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding missed the 'conflict_of_interest' and 'insider_trading_risk' categories, which are more directly relevant than 'secrecy' in this context.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "employee_ethics": {
+          "base_weight": 7.0
+        },
+        "conflict_of_interest": {
+          "base_weight": 5.0
+        },
+        "insider_trading_risk": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_6",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "eleanor.price@highnetworth.com",
+      "to": "clientservices@bnkinternal.com",
+      "subject": "Formal complaint - unauthorised trades",
+      "date": "2024-03-16 10:22",
+      "categories": [
+        "complaints"
+      ],
+      "intent": "The sender is lodging a formal complaint about unauthorized trades in their account and threatening escalation if not resolved promptly.",
+      "confidence": 1.0,
+      "evidence": [
+        "I am writing to formally complain about three trades executed in my account on 10 March without my knowledge or authorisation.",
+        "The transactions total £240,000 and resulted in a loss.",
+        "If this is not resolved within 48 hours I will be escalating to the FCA and seeking legal counsel."
+      ],
+      "reasoning": "The email explicitly states that the sender is filing a formal complaint regarding unauthorized trades, which falls under the 'complaints' category. The sender also mentions potential escalation to the FCA and legal action, further supporting the categorization.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email clearly constitutes a formal complaint about unauthorized trades, aligning with the preliminary finding.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_test_emails_7",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "oliver.grant@bnkinternal.com",
+      "to": "felix.roth@tradingdesk.de",
+      "subject": "FWD: Strategy for next week",
+      "date": "2024-03-17 21:15",
+      "categories": [
+        "market_manipulation",
+        "secrecy",
+        "change_in_communication"
+      ],
+      "intent": "The sender intends to coordinate a market manipulation strategy using non-public information and evade detection.",
+      "confidence": 0.95,
+      "evidence": [
+        "I have non-public information that the ECB is changing its forward guidance Wednesday.",
+        "If we front-run EUR/USD before the statement and coordinate with the Frankfurt desk we can move the market by at least 80 pips before anyone reacts.",
+        "Keep this off the books — use the Malta entity.",
+        "Erase any messages about this."
+      ],
+      "reasoning": "The email explicitly mentions using non-public information ('I have non-public information') to front-run the market, which constitutes market manipulation. The sender also suggests coordinating with another desk to influence the market ('coordinate with the Frankfurt desk'), which further supports the intent to manipulate. Additionally, the sender instructs the recipient to 'keep this off the books' and 'erase any messages about this,' indicating an attempt to conceal the activity, which falls under secrecy and change in communication patterns.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate as the email explicitly outlines a plan involving non-public information, market manipulation, and concealment of communication.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "market_manipulation": {
+          "base_weight": 10.0
+        },
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_8",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "helen.shaw@bnkinternal.com",
+      "to": "ops.team@bnkinternal.com",
+      "subject": "Q1 settlement reconciliation",
+      "date": "2024-03-18 09:00",
+      "categories": [],
+      "intent": "To share the Q1 settlement reconciliation report and set a deadline for corrections.",
+      "confidence": 1.0,
+      "evidence": [
+        "please find attached the Q1 settlement reconciliation report",
+        "Deadline for any corrections is 17:00 Friday"
+      ],
+      "reasoning": "The email is a routine communication sharing a report and setting a deadline for corrections. It does not contain any language or behavior indicative of non-compliance.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is routine and does not indicate any compliance concerns.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_test_emails_9",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "nina.patel@bnkinternal.com",
+      "to": "james.fordham@bnkinternal.com",
+      "subject": "Training session reminder",
+      "date": "2024-03-18 10:15",
+      "categories": [],
+      "intent": "To remind the recipient about a mandatory AML training session and request confirmation of attendance.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email is a straightforward reminder about a mandatory training session with no language or content suggesting any non-compliant behavior. It does not contain any keywords or phrases related to the defined non-compliance categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear and compliant reminder about a mandatory training session with no indications of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_test_emails_10",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "carlo.venezia@broker.it",
+      "to": "sophie.klein@bnkinternal.com",
+      "subject": "RE: Allocation on the new issue",
+      "date": "2024-03-19 17:40",
+      "categories": [
+        "bribery"
+      ],
+      "intent": "The sender is offering a personal benefit in exchange for favorable allocation on a bond issue.",
+      "confidence": 0.95,
+      "evidence": [
+        "if you can make sure we get a decent allocation on the new bond issue — say €20m — I can arrange for the ski chalet in Verbier to be available for you and your family in February, no cost.",
+        "We've done this kind of arrangement before with your colleagues and it works well for everyone."
+      ],
+      "reasoning": "The email explicitly offers a personal benefit (use of a ski chalet at no cost) in exchange for a favorable financial decision (allocation on a bond issue). This constitutes a quid pro quo arrangement, which is a clear example of bribery.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly offers a personal benefit in exchange for a favorable financial decision, which aligns with the definition of bribery.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "bribery": {
+          "base_weight": 9.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_11",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "brett.morgan@bnkinternal.com",
+      "to": "claire.duval@bnkinternal.com",
+      "subject": "Don't use work email for this",
+      "date": "2024-03-20 08:05",
+      "categories": [
+        "secrecy",
+        "change_in_communication"
+      ],
+      "intent": "The sender is attempting to shift communication to personal email and conceal information related to an investigation.",
+      "confidence": 0.95,
+      "evidence": [
+        "going forward send anything related to the Horizon fund restructuring to my Gmail",
+        "Legal told me our work emails are being monitored for the investigation",
+        "destroy the memo from last week — shred the physical copy and delete the digital version",
+        "We need to keep this between us until the board meeting"
+      ],
+      "reasoning": "The email contains explicit instructions to use personal email instead of work email, which is a clear attempt to evade monitored communication channels. Additionally, the sender instructs the recipient to destroy a memo and keep information secret, which raises concerns about potential information leakage and non-compliance with transparency requirements.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate, but an additional category for 'evidence_destruction' is warranted due to explicit instructions to destroy a memo.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_12",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "david.johnson@clientco.com",
+      "to": "relationship@bnkinternal.com",
+      "subject": "Updated investment mandate",
+      "date": "2024-03-20 14:30",
+      "categories": [
+        "investment_policy_update"
+      ],
+      "intent": "The sender is providing an updated investment policy statement and requesting confirmation of receipt.",
+      "confidence": 0.95,
+      "evidence": [
+        "please find enclosed the updated investment policy statement signed by our trustees",
+        "The key change is an increase in the equity allocation from 40% to 55%."
+      ],
+      "reasoning": "The email contains a straightforward update to an investment policy statement and does not exhibit any signs of non-compliance. There is no language or behavior indicative of market manipulation, bribery, secrecy, ethics violations, changes in communication patterns, circular trading, or complaints.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email clearly pertains to an investment policy update, which should be categorized accordingly for accurate tracking.",
+      "priority_score": 57,
+      "priority_band": "MEDIUM",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "investment_policy_update": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_13",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "victor.stone@bnkinternal.com",
+      "to": "diane.price@personalmail.com",
+      "subject": "Golf this weekend?",
+      "date": "2024-03-21 16:48",
+      "categories": [
+        "secrecy"
+      ],
+      "intent": "The sender is subtly sharing non-public information about a stock to the recipient.",
+      "confidence": 0.9,
+      "evidence": [
+        "you might want to look at Pharmalex stock before Thursday",
+        "I can't say why, obviously, but our advisory team has been very busy with them this week",
+        "Definitely not telling you to do anything with that information, just mentioning it as a friend"
+      ],
+      "reasoning": "The sender is hinting at non-public information about Pharmalex stock, suggesting the recipient look into it without explicitly stating why. This implies the sharing of potentially material non-public information (MNPI), which is a violation of confidentiality and could lead to insider trading concerns.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email subtly shares non-public information about Pharmalex stock, which aligns with the preliminary finding of potential confidentiality and insider trading concerns.",
+      "priority_score": 92,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_14",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "claire.dubois@bnkinternal.com",
+      "to": "andre.moreau@bnkinternal.com",
+      "subject": "RE: Liquidity numbers for month-end",
+      "date": "2024-03-22 19:15",
+      "categories": [
+        "circular_trading"
+      ],
+      "intent": "The sender is instructing the recipient to engage in circular trading to artificially inflate reported trading volume.",
+      "confidence": 0.95,
+      "evidence": [
+        "run the same back-and-forth on the EME bond we did in January",
+        "buy from our prop account, sell it back within the hour, repeat three or four times",
+        "It inflates our reported volume without any real market exposure",
+        "Book it under the liquidity management code so it doesn't flag"
+      ],
+      "reasoning": "The email explicitly describes a coordinated buy/sell strategy ('back-and-forth') designed to artificially inflate trading volume without actual market exposure. This is a clear example of circular trading, which is a serious compliance violation. The instruction to 'book it under the liquidity management code so it doesn't flag' further indicates an intent to conceal the activity.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly describes a circular trading scheme to inflate trading volume and includes instructions to conceal the activity, confirming the preliminary finding.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "circular_trading": {
+          "base_weight": 10.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_15",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "nicholas.ward@bnkinternal.com",
+      "to": "emily.cross@bnkinternal.com",
+      "subject": "Dragonfly Capital research note",
+      "date": "2024-03-22 11:30",
+      "categories": [
+        "employee_ethics"
+      ],
+      "intent": "To suggest reconsideration of a research rating to maintain a client relationship.",
+      "confidence": 0.9,
+      "evidence": [
+        "'The 'Underperform' rating is going to be a problem. They're one of our top fee-paying clients and the relationship team is very nervous.'",
+        "'It would really help the business if we kept them on side.'",
+        "'I'm not telling you to change your view, but just think carefully about whether a 'Neutral' might be more defensible given the uncertainty in the sector.'"
+      ],
+      "reasoning": "The email suggests reconsidering a research rating due to the client's status as a top fee-paying client, which could indicate a potential conflict of interest. While the sender does not explicitly instruct the recipient to change the rating, the implication that it would benefit the business raises ethical concerns about the independence of research analysis.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding accurately identifies a potential conflict of interest and ethical concern regarding the independence of research analysis.",
+      "priority_score": 80,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "employee_ethics": {
+          "base_weight": 7.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_16",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "compliance@bnkinternal.com",
+      "to": "allstaff@bnkinternal.com",
+      "subject": "Annual conflicts of interest disclosure — action required",
+      "date": "2024-03-23 08:00",
+      "categories": [
+        "COI-Disclosure-Reminder"
+      ],
+      "intent": "To remind staff to complete the annual conflicts of interest disclosure form.",
+      "confidence": 1.0,
+      "evidence": [
+        "All staff are required to complete the annual conflicts of interest disclosure form by 31 March."
+      ],
+      "reasoning": "The email is a standard compliance reminder for staff to complete a required disclosure form. It does not contain any language or behavior indicative of non-compliance.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is correctly identified as a compliance reminder, but it should be categorized under 'COI-Disclosure-Reminder' for clarity and tracking.",
+      "priority_score": 57,
+      "priority_band": "MEDIUM",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "COI-Disclosure-Reminder": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_test_emails_17",
+      "source": "email_data\\test_emails.xlsx",
+      "from": "ibrahim.hassan@bnkinternal.com",
+      "to": "yuki.tanaka@bnkinternal.com",
+      "subject": "The Ashford matter",
+      "date": "2024-03-24 22:10",
+      "categories": [
+        "secrecy",
+        "employee_ethics",
+        "change_in_communication"
+      ],
+      "intent": "To discuss and coordinate actions regarding a concealed side arrangement in the Ashford restructuring while avoiding detection.",
+      "confidence": 0.95,
+      "evidence": [
+        "Please don't respond to this on work channels after tonight. Use the ProtonMail I set up.",
+        "The Ashford restructuring has a side arrangement that the board hasn't been told about — management agreed to divert fees through a Cayman entity.",
+        "Only four people know.",
+        "If the auditors ask, we weren't aware of the structure.",
+        "Shred the term sheet you have."
+      ],
+      "reasoning": "The email contains multiple red flags for non-compliance. The sender explicitly instructs the recipient to switch to an off-channel communication method ('Use the ProtonMail I set up'), which indicates an attempt to evade surveillance. The mention of a 'side arrangement' that the board is unaware of and the diversion of fees through a Cayman entity suggest unethical conduct and potential financial misconduct. Additionally, the instruction to mislead auditors ('If the auditors ask, we weren't aware of the structure') and to destroy documents ('Shred the term sheet you have') further indicate a deliberate effort to conceal information and violate ethical and regulatory standards.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate, but additional categories for 'financial_misconduct' and 'document_destruction' are warranted based on the content of the email.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "employee_ethics": {
+          "base_weight": 7.0
+        },
+        "change_in_communication": {
+          "base_weight": 6.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    }
+  ]
+}

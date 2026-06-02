@@ -1,0 +1,551 @@
+{
+  "generated_at": "2026-06-02T17:26:36.250855Z",
+  "run_label": "20260602_172636",
+  "total_emails": 20,
+  "non_compliant": 6,
+  "compliant": 14,
+  "findings": [
+    {
+      "id": "xls_email_test_data_1",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Q3 Financial Report - Confidential",
+      "date": "",
+      "categories": [
+        "secrecy"
+      ],
+      "intent": "To share a confidential financial report with the finance team while emphasizing its restricted distribution.",
+      "confidence": 0.9,
+      "evidence": [
+        "This document contains sensitive revenue figures, profit margins, and forward-looking statements.",
+        "Do not distribute outside the finance team."
+      ],
+      "reasoning": "The email explicitly mentions that the attached document contains sensitive and confidential information and instructs recipients not to distribute it outside the finance team. This raises a potential concern about secrecy and the handling of non-public information (MNPI).",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The preliminary finding is accurate as the email explicitly mentions the confidential nature of the attached financial report and restricts its distribution.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_2",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Team Lunch This Friday!",
+      "date": "",
+      "categories": [],
+      "intent": "The sender is organizing a team lunch and requesting RSVPs.",
+      "confidence": 1.0,
+      "evidence": [
+        "We're organizing a team lunch this Friday at 12:30 PM at The Grand Bistro.",
+        "Please RSVP by Thursday EOD."
+      ],
+      "reasoning": "The email is a straightforward invitation to a team lunch with no indications of non-compliant behavior or language.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear and compliant invitation to a team lunch with no issues identified.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_3",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "URGENT: Password Reset Required Immediately",
+      "date": "",
+      "categories": [
+        "phishing",
+        "fraudulent_activity"
+      ],
+      "intent": "The sender intends to prompt the recipient to reset their password due to a claimed account compromise.",
+      "confidence": 0.95,
+      "evidence": [
+        "Your account has been compromised.",
+        "Click here to reset your password now: http://suspicious-link.xyz/reset.",
+        "Failure to act within 24 hours will result in account suspension."
+      ],
+      "reasoning": "The email does not contain any language or behavior that falls under the defined non-compliance categories. While the email may appear suspicious or potentially fraudulent, it does not directly relate to the compliance violations outlined in the schema.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email exhibits clear signs of phishing, including a suspicious link and urgency to reset a password, which align with fraudulent activity.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "phishing": {
+          "base_weight": 5.0
+        },
+        "fraudulent_activity": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_4",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Project Alpha - NDA Reminder",
+      "date": "",
+      "categories": [],
+      "intent": "To remind recipients about the NDA and ensure compliance with confidentiality requirements.",
+      "confidence": 1.0,
+      "evidence": [
+        "all Project Alpha materials are covered under the NDA signed on 01/01/2024",
+        "Please ensure no project details are shared via personal email or external channels."
+      ],
+      "reasoning": "The email is a compliance reminder about adhering to the NDA and explicitly instructs recipients not to share project details via personal or external channels. There is no indication of non-compliance or intent to violate regulations.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear compliance reminder about adhering to the NDA with no indications of non-compliance or regulatory violations.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_5",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Monthly Newsletter - June 2026",
+      "date": "",
+      "categories": [],
+      "intent": "To share a monthly newsletter with updates about the company.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email contains general information about company updates, including a product launch, employee spotlights, and events. There is no indication of non-compliant behavior or language that matches any of the specified categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a general newsletter with no indications of non-compliance or category matches.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_6",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Invoice #INV-2026-0892 Payment Due",
+      "date": "",
+      "categories": [],
+      "intent": "To notify the client about an invoice payment due.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email is a straightforward invoice notification with no language or content suggesting any non-compliant behavior. It provides standard payment instructions and contact information for queries.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a standard invoice notification with no compliance issues detected.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_7",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "HR Policy Update: Remote Work Guidelines",
+      "date": "",
+      "categories": [
+        "HR-Policy-Update",
+        "Remote-Work-Guidelines"
+      ],
+      "intent": "To inform employees about updates to the remote work policy.",
+      "confidence": 0.95,
+      "evidence": [
+        "Dear All, the updated remote work policy is now effective.",
+        "Key changes include: flexible hours 8AM-8PM, mandatory weekly team syncs, and VPN usage required at all times."
+      ],
+      "reasoning": "The email is a straightforward communication about updated HR policies and does not contain any language or behavior indicative of non-compliance. It is purely informational and adheres to professional standards.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is compliant but should be categorized under HR policy updates and remote work guidelines for better classification.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "HR-Policy-Update": {
+          "base_weight": 5.0
+        },
+        "Remote-Work-Guidelines": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_8",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "FREE iPhone 15 - You've Been Selected!",
+      "date": "",
+      "categories": [
+        "phishing",
+        "fraudulent_communication"
+      ],
+      "intent": "The sender intends to deceive the recipient into providing credit card details under the guise of a prize offer.",
+      "confidence": 1.0,
+      "evidence": [
+        "Claim your prize by providing your credit card details for shipping: http://prize-scam.net/claim"
+      ],
+      "reasoning": "While this email is clearly a phishing attempt, it does not fall under any of the defined non-compliance categories for financial institutions. It is not related to market manipulation, bribery, secrecy, employee ethics, communication changes, circular trading, or complaints.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "This email is a clear phishing attempt and falls under categories related to fraudulent communication and phishing.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "phishing": {
+          "base_weight": 5.0
+        },
+        "fraudulent_communication": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_9",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Merger Announcement - Strictly Confidential",
+      "date": "",
+      "categories": [
+        "secrecy"
+      ],
+      "intent": "To inform the Board of Directors about a proposed merger and emphasize confidentiality.",
+      "confidence": 0.9,
+      "evidence": [
+        "Disclose to NO ONE outside the board.",
+        "This email is intended solely for the Board of Directors."
+      ],
+      "reasoning": "The email explicitly instructs recipients to keep the information about the merger confidential and not to disclose it to anyone outside the board. This raises concerns about potential secrecy or information leakage, especially if the information qualifies as material non-public information (MNPI).",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email explicitly emphasizes confidentiality and non-disclosure, aligning with the preliminary finding of 'secrecy'.",
+      "priority_score": 92,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_10",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "IT Maintenance: Scheduled Downtime Saturday",
+      "date": "",
+      "categories": [],
+      "intent": "To inform recipients about scheduled IT system maintenance and downtime.",
+      "confidence": 1.0,
+      "evidence": [
+        "The IT team will perform system maintenance this Saturday from 2:00 AM to 6:00 AM.",
+        "All internal systems including email and VPN will be unavailable."
+      ],
+      "reasoning": "The email is a routine notification about IT system maintenance and does not contain any language or behavior indicative of non-compliance. It is purely informational and does not involve any financial, ethical, or regulatory concerns.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a routine notification about IT system maintenance and does not raise any compliance concerns.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_11",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Customer Feedback Survey Results",
+      "date": "",
+      "categories": [],
+      "intent": "To share the Q2 customer satisfaction survey results for review before a meeting.",
+      "confidence": 1.0,
+      "evidence": [
+        "Attached is the Q2 customer satisfaction survey report.",
+        "Please review before Monday's meeting."
+      ],
+      "reasoning": "The email contains a straightforward sharing of customer feedback survey results and does not include any language or behavior indicative of non-compliance. It is fully compliant with no violations detected.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is compliant and solely shares customer feedback survey results without any indication of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_12",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "You owe back taxes - Legal Action Pending",
+      "date": "",
+      "categories": [],
+      "intent": "The sender intends to deceive the recipient into providing sensitive personal and financial information under the guise of a tax notice.",
+      "confidence": 1.0,
+      "evidence": [
+        "This is a notice from the IRS.",
+        "You owe $4,200 in back taxes.",
+        "To avoid arrest, call 1-800-FAKE-IRS immediately and provide your Social Security Number and bank details."
+      ],
+      "reasoning": "The email appears to be a phishing attempt rather than a legitimate communication. However, phishing and fraud detection are outside the scope of the specified compliance categories. No evidence of market manipulation, bribery, secrecy, employee ethics violations, change in communication, circular trading, or complaints is present.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "Verification skipped: Error code: 400 - {'error': {'message': \"The response was filtered due to the prompt triggering Azure OpenAI's content management policy. Please modify your prompt and retry. To learn more about our content filtering policies please read our documentation: https://go.microsoft.com/fwlink/?linkid=2198766\", 'type': None, 'param': 'prompt', 'code': 'content_filter', 'status': 400, 'innererror': {'code': 'ResponsibleAIPolicyViolation', 'content_filter_result': {'hate': {'filtered': False, 'severity': 'safe'}, 'jailbreak': {'detected': False, 'filtered': False}, 'self_harm': {'filtered': False, 'severity': 'safe'}, 'sexual': {'filtered': False, 'severity': 'safe'}, 'violence': {'filtered': True, 'severity': 'medium'}}}}}",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_13",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Partnership Proposal - ABC Consulting",
+      "date": "",
+      "categories": [],
+      "intent": "The sender is proposing a potential partnership for digital transformation services.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email is a straightforward business proposal with no language or content suggesting non-compliance with any of the specified categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear and compliant business proposal with no indications of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_14",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Employee Benefits Enrollment Deadline",
+      "date": "",
+      "categories": [],
+      "intent": "To remind employees about the deadline for benefits enrollment.",
+      "confidence": 1.0,
+      "evidence": [
+        "Reminder: Open enrollment for 2027 benefits closes June 30, 2026.",
+        "Please log into the HR portal to update your health, dental, and vision selections."
+      ],
+      "reasoning": "The email is a standard reminder about employee benefits enrollment and does not contain any language or behavior indicative of non-compliance. It is purely informational and pertains to internal HR processes.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a compliant, informational reminder about benefits enrollment and does not raise any compliance concerns.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_15",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Product Launch Press Release",
+      "date": "",
+      "categories": [],
+      "intent": "To announce the launch of a new product, CloudSync 3.0, via a press release.",
+      "confidence": 1.0,
+      "evidence": [
+        "FOR IMMEDIATE RELEASE: Our company today announced the launch of CloudSync 3.0, a revolutionary data synchronization platform."
+      ],
+      "reasoning": "The email is a straightforward press release announcing a product launch. It does not contain any language or behavior indicative of non-compliance based on the defined categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a compliant press release announcing a product launch with no indications of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_16",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "DOUBLE your investment GUARANTEED!",
+      "date": "",
+      "categories": [
+        "false_advertising",
+        "fraudulent_claims"
+      ],
+      "intent": "To promote an investment opportunity with guaranteed returns.",
+      "confidence": 0.95,
+      "evidence": [
+        "DOUBLE your investment GUARANTEED!",
+        "Our AI trading bot has a 100% success rate.",
+        "Invest $500 today and receive $1,000 back within 7 days."
+      ],
+      "reasoning": "While the email makes bold claims about guaranteed returns and a 100% success rate, there is no explicit evidence of non-compliance categories such as market manipulation, bribery, or secrecy. However, such claims could potentially raise regulatory concerns under false advertising or misrepresentation, but this falls outside the provided categories. The email does not directly violate the compliance categories listed.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email's claims of guaranteed returns and a 100% success rate strongly suggest potential false advertising and fraudulent claims, which are compliance concerns.",
+      "priority_score": 100,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "false_advertising": {
+          "base_weight": 5.0
+        },
+        "fraudulent_claims": {
+          "base_weight": 5.0
+        },
+        "multipliers_applied": [
+          "multi_category ×1.2",
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_17",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Legal: Cease and Desist Notice",
+      "date": "",
+      "categories": [],
+      "intent": "The sender intends to issue a formal legal notice regarding trademark infringement.",
+      "confidence": 1.0,
+      "evidence": [
+        "This letter serves as formal notice that your use of the trademark 'CloudSyncPro' infringes upon our registered trademark."
+      ],
+      "reasoning": "The email is a formal legal notice regarding trademark infringement and does not contain any language or behavior indicative of non-compliance with financial regulations.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a formal legal notice regarding trademark infringement and does not pertain to compliance with financial regulations.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_18",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Webinar Invitation: AI in Healthcare",
+      "date": "",
+      "categories": [],
+      "intent": "To invite professionals to a webinar on AI in healthcare.",
+      "confidence": 1.0,
+      "evidence": [
+        "Join us for a free webinar on June 10, 2026 at 3:00 PM EST — 'AI in Healthcare: Opportunities and Challenges'."
+      ],
+      "reasoning": "The email is a straightforward invitation to a webinar and does not contain any language or content that suggests non-compliance with the specified categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear and compliant invitation to a webinar without any indications of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    },
+    {
+      "id": "xls_email_test_data_19",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Data Breach Notification - Action Required",
+      "date": "",
+      "categories": [
+        "secrecy"
+      ],
+      "intent": "To notify internal stakeholders about a data breach and instruct them to keep the matter confidential until legal review is complete.",
+      "confidence": 0.9,
+      "evidence": [
+        "Do NOT discuss externally until legal review is complete."
+      ],
+      "reasoning": "The email explicitly instructs recipients not to discuss the data breach externally, which could indicate an attempt to control the flow of information and maintain secrecy. While this may be a standard protocol during legal review, it falls under the 'secrecy' category as it involves restricting information sharing.",
+      "is_compliant": false,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email's intent to restrict external discussion aligns with the 'secrecy' category, and the preliminary finding is accurate.",
+      "priority_score": 92,
+      "priority_band": "CRITICAL",
+      "alert_level": "HIGH",
+      "score_breakdown": {
+        "secrecy": {
+          "base_weight": 8.0
+        },
+        "multipliers_applied": [
+          "high_confidence ×1.15"
+        ]
+      }
+    },
+    {
+      "id": "xls_email_test_data_20",
+      "source": "C:\\Users\\MrUtkarsh\\PycharmProjects\\email_compliance_check_v1\\email_data\\email_test_data.xlsx",
+      "from": "",
+      "to": "",
+      "subject": "Office Supplies Order Confirmation",
+      "date": "",
+      "categories": [],
+      "intent": "Confirm an office supplies order and provide delivery details.",
+      "confidence": 1.0,
+      "evidence": [],
+      "reasoning": "The email is a straightforward order confirmation for office supplies with no language or content suggesting any non-compliance. It does not contain any keywords or phrases related to the defined non-compliance categories.",
+      "is_compliant": true,
+      "guardrail_passed": true,
+      "guardrail_issues": [],
+      "verification_note": "The email is a clear and compliant order confirmation with no indications of non-compliance.",
+      "priority_score": 0,
+      "priority_band": "COMPLIANT",
+      "alert_level": "NONE",
+      "score_breakdown": {}
+    }
+  ]
+}
