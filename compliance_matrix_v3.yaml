@@ -1,0 +1,347 @@
+# ============================================================
+# compliance_matrix.yaml
+# Compliance Scoring Matrix - Configurable Parameters
+#
+# REVISION HISTORY
+# v1.0  Original release
+# v2.0  Enhanced based on live test data analysis (Jun 2026)
+#       Issues found and fixed:
+#         1. AI inventing categories not in schema (phishing,
+#            fraudulent_activity, HR-Policy-Update, etc.)
+#            Fix: explicit out_of_scope list + strengthened
+#            SYSTEM_PROMPT guidance in compliance_agent.py
+#         2. Score inflation - 14/23 emails scoring 100/100
+#            Fix: max_raw_score raised 10->20, cap_at_100
+#            removed from single-category findings
+#         3. Context-blind secrecy misclassification
+#            (Merger board memo, Data breach notification
+#            scored CRITICAL when they are legitimate)
+#            Fix: legitimate_context_keywords list added;
+#            secrecy weight reduced 8->7 (board/legal
+#            confidentiality is lower risk than MNPI leak)
+#         4. Invented sub-categories used as real ones
+#            (conflict_of_interest, insider_trading_risk,
+#            circular_trading, COI-Disclosure-Reminder)
+#            Fix: canonical_aliases map added to guide AI
+#         5. Single high-weight category always reaching 100
+#            Fix: per_category_score_cap: 90 for single cat
+#         6. Complaint email (unauthorised trades) scored 0
+#            Fix: complaints weight raised 4->6
+# ============================================================
+
+
+# ----------------------------------------------------------------
+# CATEGORY DEFINITIONS
+# These are the ONLY valid category IDs the AI may return.
+# Any ID not in this list is rejected by the guardrail.
+# Higher base_weight = more severe non-compliance.
+# ----------------------------------------------------------------
+categories:
+
+  market_manipulation:
+    label: "Market Manipulation / Misconduct"
+    base_weight: 10
+    description: >
+      Any communication that attempts to artificially influence
+      market prices, volumes, or participant behaviour. Includes
+      coordinated trading, front-running, wash trading, and
+      pump-and-dump schemes.
+    keywords:
+      - "coordinate"
+      - "push the price"
+      - "front run"
+      - "insider"
+      - "price fix"
+      - "rig the market"
+      - "pump"
+      - "dump"
+      - "unload"
+      - "wash trade"
+      - "circular"
+    # v2: added wash_trade / circular keywords observed in test data
+
+  bribery:
+    label: "Market Bribery / Quid Pro Quo"
+    base_weight: 9
+    description: >
+      Offering, giving, or accepting bribes, kickbacks, or improper
+      payments to influence financial or business decisions. Includes
+      gifts, hospitality, or retainers offered in exchange for
+      preferential treatment.
+    keywords:
+      - "kickback"
+      - "payment for favor"
+      - "under the table"
+      - "gift in exchange"
+      - "bribe"
+      - "quid pro quo"
+      - "retainer"
+      - "consulting fee"
+      - "fast-track"
+      - "thank-you"
+    # v2: added retainer/consulting fee pattern seen in test email 3
+
+  secrecy:
+    label: "Secrecy / MNPI Leakage"
+    base_weight: 7
+    # v2: REDUCED from 8 to 7.
+    # Rationale: test data showed legitimate board memos and
+    # data breach notifications scored CRITICAL due to normal
+    # confidentiality language. The true risk is MNPI shared
+    # with EXTERNAL or UNAUTHORISED parties, not internal
+    # confidentiality instructions between authorised staff.
+    description: >
+      Sharing material non-public information (MNPI) or
+      confidential information with EXTERNAL or UNAUTHORISED
+      parties. Does NOT apply to internal confidentiality
+      reminders, board memos to board members, or legal
+      hold instructions from the legal team.
+    keywords:
+      - "don't tell anyone"
+      - "between us only"
+      - "off the record"
+      - "MNPI"
+      - "you have time to position"
+      - "delete this after reading"
+      - "you didn't hear this from me"
+      - "announcement is Thursday"
+    legitimate_context_exclusions:
+      # If ALL of the email's recipients are in these roles/domains
+      # AND the subject matches these patterns, reduce confidence by 0.30
+      # (guidance for the AI — not hard-coded logic)
+      - "board of directors"
+      - "legal review"
+      - "data breach notification"
+      - "legal hold"
+      - "NDA reminder"
+      - "compliance reminder"
+
+  employee_ethics:
+    label: "Employee Ethics Violation"
+    base_weight: 7
+    description: >
+      Conduct violating the organisation's code of ethics.
+      Includes undisclosed conflicts of interest, personal
+      account trading in securities the employee has coverage
+      on, side deals, and policy violations. Also covers
+      analyst pressure to change ratings for commercial reasons.
+    keywords:
+      - "personal gain"
+      - "conflict of interest"
+      - "side deal"
+      - "unauthorized trade"
+      - "policy violation"
+      - "personal account"
+      - "brother-in-law"
+      - "family member"
+      - "neutralise the rating"
+      - "underperform"
+      - "fee-paying client"
+    # v2: added analyst-pressure keywords from test email 15 (Dragonfly)
+
+  change_in_communication:
+    label: "Change in Communication / Off-Channel"
+    base_weight: 6
+    description: >
+      Deliberate attempts to move sensitive conversations to
+      unmonitored channels to evade surveillance. Explicit
+      requests to delete messages, use personal email/phone,
+      or switch to encrypted apps in the context of deal
+      discussions.
+    keywords:
+      - "use personal email"
+      - "call me instead"
+      - "don't put in writing"
+      - "delete this"
+      - "off channel"
+      - "WhatsApp"
+      - "Signal"
+      - "Telegram"
+      - "ProtonMail"
+      - "paper trail"
+      - "don't put anything in email"
+      - "use my personal number"
+    # v2: added ProtonMail/Telegram seen in test email 17 (Ashford)
+
+  complaints:
+    label: "Client / Regulatory Complaints"
+    base_weight: 6
+    # v2: RAISED from 4 to 6.
+    # Rationale: test data showed "Formal complaint - unauthorised
+    # trades" (£240k loss, FCA escalation) scored 0 (COMPLIANT)
+    # because complaints weight=4 was below the scoring threshold.
+    # Regulatory complaints involving financial loss must be
+    # treated as HIGH priority.
+    description: >
+      Formal or informal complaints, disputes, or grievances from
+      clients or counterparties. Especially those involving
+      financial losses, unauthorised transactions, or threats
+      to escalate to regulators (FCA, SEC, etc.).
+    keywords:
+      - "complaint"
+      - "dispute"
+      - "unhappy"
+      - "escalate"
+      - "regulatory concern"
+      - "legal action"
+      - "unauthorised"
+      - "without my knowledge"
+      - "FCA"
+      - "SEC"
+      - "ombudsman"
+    # v2: added FCA/SEC/unauthorised/ombudsman keywords
+
+
+# ----------------------------------------------------------------
+# OUT-OF-SCOPE CATEGORY GUIDANCE
+# These are categories the AI MUST NOT use. If an email matches
+# these patterns it should either map to a valid category or
+# return is_compliant=true.
+# The SYSTEM_PROMPT in compliance_agent.py must reference this.
+# ----------------------------------------------------------------
+out_of_scope_categories:
+  # These were invented by the AI in test runs and caused
+  # false positives scored at CRITICAL/100:
+  - phishing                   # -> not a financial compliance category
+  - fraudulent_activity        # -> use complaints or market_manipulation
+  - fraudulent_communication   # -> use complaints
+  - fraudulent_claims          # -> use market_manipulation
+  - false_advertising          # -> use market_manipulation
+  - HR-Policy-Update           # -> compliant unless ethics violation
+  - Remote-Work-Guidelines     # -> always compliant
+  - investment_policy_update   # -> compliant routine business
+  - COI-Disclosure-Reminder    # -> compliant; this is GOOD behaviour
+  - conflict_of_interest       # -> use employee_ethics instead
+  - insider_trading_risk       # -> use market_manipulation or employee_ethics
+  - circular_trading           # -> use market_manipulation instead
+
+# Canonical alias map: if the AI uses a non-canonical ID,
+# the guardrail should remap it to the correct one.
+canonical_aliases:
+  conflict_of_interest:   employee_ethics
+  insider_trading_risk:   market_manipulation
+  circular_trading:       market_manipulation
+  wash_trading:           market_manipulation
+  front_running:          market_manipulation
+  kickbacks:              bribery
+  off_channel:            change_in_communication
+  data_leak:              secrecy
+  mnpi_leak:              secrecy
+
+
+# ----------------------------------------------------------------
+# SCORING PARAMETERS
+# ----------------------------------------------------------------
+scoring:
+
+  # Confidence thresholds (0.0 - 1.0)
+  confidence_thresholds:
+    high:   0.80    # >= 0.80 -> Alert: HIGH
+    medium: 0.55    # >= 0.55 -> Alert: MEDIUM  (v2: raised from 0.50)
+    low:    0.00    # <  0.55 -> Alert: LOW
+
+  # Priority score bands (0-100)
+  priority_bands:
+    critical: 85    # v2: RAISED from 80 to 85
+                    # Rationale: too many emails hitting CRITICAL
+                    # (14/23 in test run 2). Tightening threshold
+                    # reserves CRITICAL for truly severe cases.
+    high:     65    # v2: RAISED from 60 to 65
+    medium:   40
+    low:       0
+
+  # Multipliers
+  multipliers:
+    multi_category_bonus:      1.15   # v2: REDUCED from 1.20 to 1.15
+                                      # 1.20 was too aggressive — even
+                                      # medium-weight combos hit 100.
+    high_confidence_bonus:     1.10   # v2: REDUCED from 1.15 to 1.10
+    external_recipient_bonus:  1.10   # applies when email goes outside org
+
+  # v2: RAISED from 10 to 18.
+  # Rationale: with max_raw=10, any category weight>=10 (market_manipulation)
+  # normalised to 100 BEFORE multipliers. Raising ceiling spreads scores
+  # across the full 0-100 range and restores differentiation.
+  max_raw_score: 18
+
+  # v2 NEW: Cap single-category findings below 100 unless weight >= 10
+  # This prevents medium-weight single categories (complaints=6,
+  # change_in_comm=6) from reaching CRITICAL.
+  per_category_score_cap:
+    single_category: 90     # max score when only 1 category detected
+    two_categories:  100    # no cap when 2+ categories
+
+
+# ----------------------------------------------------------------
+# CONTEXT SENSITIVITY RULES  (v2 NEW)
+# Guidance for the AI when evaluating borderline secrecy cases.
+# An email matching both a secrecy keyword AND a legitimate
+# context indicator should have confidence reduced.
+# ----------------------------------------------------------------
+context_sensitivity:
+  secrecy_legitimate_contexts:
+    # These are normal business communications that use
+    # confidentiality language but are NOT compliance violations.
+    # The AI should return is_compliant=true for these patterns.
+    patterns:
+      - description: "Board memo to board members about internal matter"
+        indicators:
+          - "board of directors"
+          - "intended solely for the board"
+        action: "mark_compliant"
+
+      - description: "Legal hold or legal review instruction"
+        indicators:
+          - "legal review"
+          - "legal hold"
+          - "do not discuss until legal"
+        action: "reduce_confidence_by_0.35"
+
+      - description: "Standard NDA or compliance reminder"
+        indicators:
+          - "NDA"
+          - "compliance reminder"
+          - "annual disclosure"
+          - "open enrollment"
+        action: "mark_compliant"
+
+      - description: "Data breach notification following incident response procedure"
+        indicators:
+          - "data breach notification"
+          - "incident response"
+          - "do not discuss externally until"
+        action: "reduce_confidence_by_0.30"
+        note: >
+          A data breach notification instructing staff not to
+          discuss externally pending legal review is standard
+          incident response, NOT a secrecy violation.
+
+
+# ----------------------------------------------------------------
+# GUARDRAIL THRESHOLDS
+# ----------------------------------------------------------------
+guardrails:
+  min_evidence_lines:    1
+  min_reasoning_length:  40    # v2: RAISED from 30 to 40 chars
+                               # Forces more substantive reasoning
+  max_tokens_per_call:   2000
+
+  # v2 NEW: if AI returns a category not in the canonical list,
+  # the guardrail should attempt to remap via canonical_aliases
+  # before rejecting. Only hard-reject truly unknown IDs.
+  enforce_canonical_categories: true
+
+  # v2 NEW: minimum confidence required to flag as non-compliant
+  # Prevents low-confidence hunches from generating alerts
+  min_confidence_for_flag: 0.60
+
+
+# ----------------------------------------------------------------
+# OUTPUT SETTINGS
+# ----------------------------------------------------------------
+output:
+  results_dir:       "result"
+  results_filename:  "compliance_results.json"
+  highlight_alert_levels:
+    - "CRITICAL"
+    - "HIGH"
